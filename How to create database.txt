@@ -1,0 +1,1 @@
+docker run -d --name plusTrackMariaDb -e MYSQL_ROOT_PASSWORD=PlusTrack123456 -e MYSQL_DATABASE=PlusTrackV1 -e MYSQL_USER=plustrack -e MYSQL_PASSWORD=PlusTrack123456 -p 3306:3306 -v //c/PlusTrack/DataBase:/var/lib/mysql mariadb:latest

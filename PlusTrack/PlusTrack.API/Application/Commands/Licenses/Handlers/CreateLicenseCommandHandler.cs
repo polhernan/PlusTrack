@@ -1,0 +1,32 @@
+﻿using MediatR;
+using PlusTrack.API.Application.DTOs.Licenses;
+using PlusTrack.API.Domain.AbstractRepositories;
+using PlusTrack.API.Domain.Entities;
+
+namespace PlusTrack.API.Application.Commands.Licenses.Handlers
+{
+    public class CreateLicenseCommandHandler : IRequestHandler<CreateLicenseCommand, LicenseDto>
+    {
+
+
+        public PlusTrackDbContext _context { get; }
+
+
+        public CreateLicenseCommandHandler(PlusTrackDbContext context)
+        {
+            _context = context;
+        }
+
+
+        public async Task<LicenseDto> Handle(CreateLicenseCommand request, CancellationToken cancellationToken)
+        {
+            License newLicense = new License(request.LicenseDto);
+            
+            _context.Add(newLicense);
+
+            await _context.SaveChangesAsync();
+
+            return new LicenseDto(newLicense);
+        }
+    }
+}
