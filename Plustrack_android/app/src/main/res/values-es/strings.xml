@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Plustrack_android</string>
+    <string name="Inici">Inicio</string>
+    <string name="Paquets">Paquetes</string>
+    <string name="Perfil">Perfil</string>
+</resources>

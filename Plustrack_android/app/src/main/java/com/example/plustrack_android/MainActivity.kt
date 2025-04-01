@@ -1,11 +1,14 @@
 package com.example.plustrack_android
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
+import android.util.Log
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -24,25 +27,46 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val txtCrearCompte: TextView = findViewById(R.id.txtCrearCompte)
+        val loginUsuari: EditText = findViewById(R.id.loginUsuari)
+        val loginContrasenya: EditText = findViewById(R.id.loginContrasenya)
 
-        // Crear un SpannableString para modificar el color y comportamiento del texto
+        val btnEntrar: TextView = findViewById(R.id.btnEntrar)
+        val txtCrearCompte: TextView = findViewById(R.id.txtCrearCompte)
+        val btnNoUsuari: TextView = findViewById(R.id.btnNoUsuari)
+
         val text = "o crear compte"
         val spannableString = SpannableString(text)
 
-        // Hacer "crear compte" azul y con estilo de enlace
         val start = text.indexOf("crear compte")
         val end = start + "crear compte".length
 
         spannableString.setSpan(ForegroundColorSpan(Color.BLUE), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE) // Subrayado para simular un enlace
+        spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // Establecer el texto en el TextView
         txtCrearCompte.text = spannableString
 
-        // Hacer clic en "crear compte"
+        btnEntrar.setOnClickListener {
+            // Aixo verifica l'usuari i la seva contrasenya, aixi que aqui es crida a la base de dades
+            val fragment = IniciFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .addToBackStack(null)
+                .commit()
+
+        }
+
         txtCrearCompte.setOnClickListener {
-            Toast.makeText(this, "Redirigir a la creación de cuenta", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Boton Crear Compte pulsado", Toast.LENGTH_SHORT).show()
+            val fragment = CrearCompteFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView, fragment)
+                .addToBackStack(null)
+                .commit()
+        }
+
+        btnNoUsuari.setOnClickListener {
+            Toast.makeText(this, "Boton Sense Usuari pulsado", Toast.LENGTH_SHORT).show()
+            // Aixo entra a la app com un usuari no registrat
         }
 
     }

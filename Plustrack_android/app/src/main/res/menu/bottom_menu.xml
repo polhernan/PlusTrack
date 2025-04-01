@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_inici_selector"
+        android:checked="true"
+        android:icon="@drawable/menu_inici_selector"
+        android:title="@string/Inici" />
+    <item
+        android:id="@+id/menu_paquets_selector"
+        android:icon="@drawable/menu_paquets_selector"
+        android:title="@string/Paquets" />
+
+    <item
+        android:id="@+id/menu_perfil_selector"
+        android:icon="@drawable/menu_perfil_selector"
+        android:title="@string/Perfil" />
+</menu>
