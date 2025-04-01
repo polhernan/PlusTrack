@@ -1,0 +1,42 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using PlusTrack.API.Application.Commands.Employees;
+using PlusTrack.API.Application.DTOs.Employee;
+using PlusTrack.API.Application.DTOs.General;
+using PlusTrack.API.Domain.Entities;
+
+namespace PlusTrack.API.WebApi.Controllers
+{
+    [ApiController]
+    public class EmployeeController : Controller
+    {
+
+
+        private readonly IMediator bus;
+
+
+        public EmployeeController(IMediator bus)
+        {
+            this.bus = bus;
+        }
+
+
+        [HttpPost("v1/employees")]
+        public async Task<ActionResult<EmployeeDto>> CreateEmployee(EmployeeDto employee)
+        {
+            var createEmployeeCommand = new CreateEmployeeCommand(employee);
+            var result = await bus.Send(createEmployeeCommand);
+
+            return Ok(result);
+        }
+
+        [HttpPost("v1/employees/login")]
+        public async Task<ActionResult<Employee>> LoginEmployee(UserLoginRequest request)
+        {
+            var loginEmployeeCommand = new LoginEmployeeCommand(request.Email, request.Password);
+            var result = await bus.Send(loginEmployeeCommand);
+
+            return Ok(result);
+        }
+    }
+}

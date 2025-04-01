@@ -1,4 +1,8 @@
-﻿namespace PlusTrack.API.Domain.Entities
+﻿using System.Text.Json.Serialization;
+using PlusTrack.API.Application.DTOs.Employee;
+using PlusTrack.API.Application.Services;
+
+namespace PlusTrack.API.Domain.Entities
 {
     public class Employee
     {
@@ -14,5 +18,23 @@
         public Guid? CompanyId { get; set; }
 
         public IEnumerable<Route>? Routes { get; set; }
+
+
+        [JsonConstructor]
+        public Employee()
+        {
+            
+        }
+
+        public Employee(EmployeeDto snapshot)
+        {
+            this.Id = snapshot.Id ?? Guid.NewGuid();
+            this.Name = snapshot.Name;
+            this.Surnames = snapshot.Surnames;
+            this.Dni = snapshot.Dni;
+            this.BirthDate = snapshot.BirthDate;
+            this.Email = snapshot.Email;
+            this.Password = Crypter.Hash(snapshot.Password);
+        }
     }
 }

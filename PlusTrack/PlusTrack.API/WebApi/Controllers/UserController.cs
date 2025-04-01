@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Users;
+using PlusTrack.API.Application.DTOs.General;
 using PlusTrack.API.Application.Queries.Users;
 using PlusTrack.API.Application.Services;
 using PlusTrack.API.Domain.Entities;
@@ -42,17 +43,10 @@ namespace PlusTrack.API.WebApi.Controllers
         }
 
         [HttpGet("v1/users/login")]
-        public async Task<ActionResult<User>> GetUserByEmail(string email, string password)
+        public async Task<ActionResult<User>> LoginUser(UserLoginRequest request)
         {
-            var getUserByEmailQuery = new GetUserByEmailQuery(email);
-            var result = await bus.Send(getUserByEmailQuery);
-
-            if (result.Password == null)
-                throw new EntityNotFoundException($"This user does not have a email and password.");
-
-
-            if (!Crypter.Verify(password, result.Password))
-                throw new Exception("The password does not match with email");
+            var loginUserCommand = new LoginUserCommand(request.Email, request.Password);
+            var result = await bus.Send(loginUserCommand);
 
             return Ok(result);
         }
