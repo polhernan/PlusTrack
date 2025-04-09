@@ -1,12 +1,9 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Users;
 using PlusTrack.API.Application.DTOs.General;
 using PlusTrack.API.Application.Queries.Users;
-using PlusTrack.API.Application.Services;
 using PlusTrack.API.Domain.Entities;
-using PlusTrack.API.Infrastructure.Exceptions;
 
 namespace PlusTrack.API.WebApi.Controllers
 {
@@ -33,6 +30,7 @@ namespace PlusTrack.API.WebApi.Controllers
             return Ok(result);
         }
 
+
         [HttpGet("v1/users/by-email")]
         public async Task<ActionResult<User>> GetUserByEmail(string email)
         {
@@ -41,6 +39,7 @@ namespace PlusTrack.API.WebApi.Controllers
 
             return Ok(result);
         }
+
 
         [HttpGet("v1/users/login")]
         public async Task<ActionResult<User>> LoginUser(UserLoginRequest request)

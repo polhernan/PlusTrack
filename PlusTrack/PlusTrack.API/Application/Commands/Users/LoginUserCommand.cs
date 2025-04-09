@@ -1,7 +1,4 @@
-﻿using MediatR;
-using PlusTrack.API.Domain.Entities;
-
-namespace PlusTrack.API.Application.Commands.Users
+﻿namespace PlusTrack.API.Application.Commands.Users
 {
     public class LoginUserCommand : IRequest<User>
     {
