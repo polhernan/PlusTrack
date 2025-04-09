@@ -34,30 +34,32 @@ class CrearCompteFragment : Fragment(R.layout.crear_compte_fragment) {
         val btnRegistrar: TextView = view.findViewById(R.id.btnRegistrar)
         val txtFerLogin: TextView = view.findViewById(R.id.txtFerLogin)
 
-        // Crear un SpannableString para modificar el color y comportamiento del texto
         val text = "o fer login"
         val spannableString = SpannableString(text)
 
-        // Hacer "fer login" azul y con estilo de enlace
         val start = text.indexOf("fer login")
         val end = start + "fer login".length
 
-        spannableString.setSpan(ForegroundColorSpan(Color.BLUE), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(ForegroundColorSpan(Color.CYAN), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        // Establecer el texto en el TextView
         txtFerLogin.text = spannableString
 
         btnRegistrar.setOnClickListener{
             // Aqui agafem les dades de l'usuari y creem un compte amb elles
+            val fragmentManager = parentFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, IniciFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
 
         txtFerLogin.setOnClickListener {
-            txtFerLogin.setOnClickListener {
-                val intent = Intent(requireContext(), MainActivity::class.java)
-                startActivity(intent)
-            }
+            val fragmentManager = parentFragmentManager
+            val transaction = fragmentManager.beginTransaction()
+            transaction.replace(R.id.fragmentContainerView, LoginFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
     }
-
 }

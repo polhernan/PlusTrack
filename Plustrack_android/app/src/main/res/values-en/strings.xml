@@ -4,4 +4,25 @@
     <string name="Inici">Home</string>
     <string name="Paquets">Packages</string>
     <string name="Perfil">Profile</string>
+    <string name="Preguntes_frequents">FAQs</string>
+    <string name="Que_es_plustrack">What is PlusTrack?</string>
+    <string name="Que_es_plustrack_resposta">We are a company that let\'s it\'s clients have a live tracking system of the state of the product that they have ordered.</string>
+    <string name="Com_funciona">How does it work?</string>
+    <string name="Com_funciona_resposta">Each product is assigned a unique identifier that allows tracking</string>
+    <string name="Es_segur">Is it safe?</string>
+    <string name="Es_segur_resposta">"Yes, because we encrypt the information, ensuring that only you can access the product status.  "</string>
+    <string name="Per_a_qui_es">Who is this service for?</string>
+    <string name="Per_a_qui_es_resposta">Our service is designed for companies that need to manage the deliveries of their products and for their customers, to be aware of the status of their order.</string>
+    <string name="Noticies">News</string>
+    <string name="Contactar">Contact</string>
+    <string name="Info_contactar">
+        <![CDATA[
+        "If you want to contact us about our projects or services, fill out the form and we will contact you as soon as possible.<br /><br />
+        <b>Main office:</b> Calle de Balmes, 123, 08008<br /><br />
+        <b>Telephone:</b> +34 938 75 32 14<br /><br />
+        <b>Email:</b> plustrack@gethelp.com"
+        ]]>
+    </string>
+
+
 </resources>

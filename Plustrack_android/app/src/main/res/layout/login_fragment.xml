@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_color">
+    android:background="@drawable/gradient_color"
+    >
 
     <ImageView
         android:id="@+id/logo_plustrack"
@@ -13,6 +13,7 @@
         android:src="@drawable/logo_plustrack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="56dp"/>
 
@@ -46,42 +47,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginVertical="36dp"/>
 
-    <EditText
-        android:id="@+id/loginRepetirContrasenya"
-        android:layout_width="325dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_rounded_total"
-        android:hint="Repetir contrasenya"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:fontFamily="@font/jost_regular"
-        app:layout_constraintTop_toBottomOf="@+id/loginContrasenya"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="36dp"/>
-
-    <EditText
-        android:id="@+id/loginEmail"
-        android:layout_width="325dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_rounded_total"
-        android:hint="Email"
-        android:padding="10dp"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:fontFamily="@font/jost_regular"
-        app:layout_constraintTop_toBottomOf="@+id/loginRepetirContrasenya"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="36dp"/>
-
     <TextView
-        android:id="@+id/btnRegistrar"
+        android:id="@+id/btnEntrar"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_rounded_total"
-        android:text="Registrar"
+        android:text="Entrar"
         android:textColor="#000000"
         android:textSize="18sp"
         android:padding="10dp"
@@ -89,21 +60,40 @@
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/jost_regular"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/loginContrasenya"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginVertical="36dp"/>
+        android:layout_marginVertical="76dp"/>
 
     <TextView
-        android:id="@+id/txtFerLogin"
+        android:id="@+id/txtCrearCompte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="o fer login"
+        android:text="o crear compte"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="@font/jost_regular"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar"
+        app:layout_constraintTop_toBottomOf="@+id/btnEntrar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginVertical="26dp"/>
+
+    <TextView
+        android:id="@+id/btnNoUsuari"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_rounded_total"
+        android:text="Entrar sense usuari"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintTop_toBottomOf="@+id/txtCrearCompte"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="56dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

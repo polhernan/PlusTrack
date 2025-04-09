@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_color">
+
+
+    <ImageButton
+        android:id="@+id/back_arrow"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/flecha_izquierda"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
+
+    <TextView
+        android:id="@+id/titol_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/Preguntes_frequents"
+        android:fontFamily="@font/jost_bold"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titol_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/cuadradoBlanco"
+        android:layout_width="match_parent"
+        android:layout_height="985dp"
+        android:background="#F0F0F0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/foto_faqs"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+        android:id="@+id/foto_faqs"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/foto_faqs"
+        app:layout_constraintBottom_toTopOf="@+id/Que_es_plustrack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/Que_es_plustrack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/Que_es_plustrack"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foto_faqs"
+        />
+
+    <TextView
+        android:id="@+id/Que_es_plustrack_resposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Que_es_plustrack_resposta"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Que_es_plustrack"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/Com_funciona"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Com_funciona"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Que_es_plustrack_resposta"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/Com_funciona_resposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Com_funciona_resposta"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Com_funciona"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/Es_segur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Es_segur"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Com_funciona_resposta"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/Es_segur_resposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Es_segur_resposta"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Es_segur"
+        android:layout_marginStart="16dp"/>
+
+    <TextView
+        android:id="@+id/Per_qui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Per_a_qui_es"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Es_segur_resposta"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"/>
+
+    <TextView
+        android:id="@+id/Per_qui_resposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/Per_a_qui_es_resposta"
+        android:textSize="24dp"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Per_qui"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

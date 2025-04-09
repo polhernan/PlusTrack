@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_color">
+
+    <ImageButton
+        android:id="@+id/back_arrow"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/flecha_izquierda"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
+
+    <TextView
+        android:id="@+id/titol_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/Contactar"
+        android:fontFamily="@font/jost_bold"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/titol_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/cuadradoBlanco"
+                android:layout_width="match_parent"
+                android:layout_height="800dp"
+                android:background="#F0F0F0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/Info_contactar"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintTop_toTopOf="@id/cuadradoBlanco"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfNom"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:hint="Nom"
+        android:fontFamily="@font/jost_regular"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/design_default_color_primary"
+        app:boxBackgroundMode="filled"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@+id/info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfEmail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Email"
+        android:fontFamily="@font/jost_regular"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/design_default_color_primary"
+        app:boxBackgroundMode="filled"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@+id/tfNom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfTelefon"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Telefon"
+        android:fontFamily="@font/jost_regular"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/design_default_color_primary"
+        app:boxBackgroundMode="filled"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@+id/tfEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTelefon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tfMissatge"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Missatge"
+        android:fontFamily="@font/jost_regular"
+        app:hintTextColor="@color/black"
+        app:boxStrokeColor="@color/design_default_color_primary"
+        app:boxBackgroundMode="filled"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@+id/tfTelefon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:hintAnimationEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etMissatge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/btnEntrar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/edittext_rounded_total"
+        android:text="Entrar"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:padding="10dp"
+        android:gravity="center"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/jost_regular"
+        app:layout_constraintTop_toBottomOf="@+id/tfMissatge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.util.Log
+import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -15,58 +16,66 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        val loginUsuari: EditText = findViewById(R.id.loginUsuari)
-        val loginContrasenya: EditText = findViewById(R.id.loginContrasenya)
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
 
-        val btnEntrar: TextView = findViewById(R.id.btnEntrar)
-        val txtCrearCompte: TextView = findViewById(R.id.txtCrearCompte)
-        val btnNoUsuari: TextView = findViewById(R.id.btnNoUsuari)
-
-        val text = "o crear compte"
-        val spannableString = SpannableString(text)
-
-        val start = text.indexOf("crear compte")
-        val end = start + "crear compte".length
-
-        spannableString.setSpan(ForegroundColorSpan(Color.BLUE), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        txtCrearCompte.text = spannableString
-
-        btnEntrar.setOnClickListener {
-            // Aixo verifica l'usuari i la seva contrasenya, aixi que aqui es crida a la base de dades
-            val fragment = IniciFragment()
+        // Carreguem LoginFragment amagant el bottomNavigationView
+        if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, fragment)
-                .addToBackStack(null)
+                .replace(R.id.fragmentContainerView, LoginFragment())
                 .commit()
 
+            bottomNavigationView.visibility = View.GONE
         }
 
-        txtCrearCompte.setOnClickListener {
-            Toast.makeText(this, "Boton Crear Compte pulsado", Toast.LENGTH_SHORT).show()
-            val fragment = CrearCompteFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainerView, fragment)
-                .addToBackStack(null)
-                .commit()
+        // Si el fragment es el de CrearCompteFragment o el de LoginFragment, tambe amagem el bottomNavigationView
+        // Tenim que tornar a posar el LoginFragment ja que si l'usuari tira enrrera amb el boto d'anar enrrera
+        // propi del movil, es veure el bottom menu
+        supportFragmentManager.addOnBackStackChangedListener {
+            val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
+
+            if (fragment is CrearCompteFragment || fragment is LoginFragment) {
+                bottomNavigationView.visibility = View.GONE
+            } else {
+                bottomNavigationView.visibility = View.VISIBLE
+            }
         }
 
-        btnNoUsuari.setOnClickListener {
-            Toast.makeText(this, "Boton Sense Usuari pulsado", Toast.LENGTH_SHORT).show()
-            // Aixo entra a la app com un usuari no registrat
+        findViewById<BottomNavigationView>(R.id.bottomNavigationView).setOnItemSelectedListener { item ->
+
+            when (item.itemId) {
+                R.id.menu_inici_selector -> {
+                    val transaccio = supportFragmentManager.beginTransaction()
+                    val menuInici = IniciFragment()
+                    transaccio.replace(R.id.fragmentContainerView, menuInici)
+                    transaccio.commit()
+                    true
+                }
+
+                R.id.menu_paquets_selector -> {
+                    val transaccio = supportFragmentManager.beginTransaction()
+                    val menuPaquets = PaquetsFragment()
+                    transaccio.replace(R.id.fragmentContainerView, menuPaquets)
+                    transaccio.commit()
+                    true
+                }
+
+                else -> {
+                    val transaccio = supportFragmentManager.beginTransaction()
+                    val menuPerfil = PerfilFragment()
+                    transaccio.replace(R.id.fragmentContainerView, menuPerfil)
+                    transaccio.commit()
+                    true
+                }
+
+            }
         }
 
     }

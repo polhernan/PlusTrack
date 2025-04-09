@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_inici_selector"
-        android:checked="true"
         android:icon="@drawable/menu_inici_selector"
-        android:title="@string/Inici" />
+        android:title="@string/Inici"
+        android:checked="true" />
     <item
         android:id="@+id/menu_paquets_selector"
         android:icon="@drawable/menu_paquets_selector"

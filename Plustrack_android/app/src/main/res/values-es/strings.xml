@@ -4,4 +4,23 @@
     <string name="Inici">Inicio</string>
     <string name="Paquets">Paquetes</string>
     <string name="Perfil">Perfil</string>
+    <string name="Preguntes_frequents">Preguntas frequentes</string>
+    <string name="Que_es_plustrack">¿Qué es PlusTrack</string>
+    <string name="Que_es_plustrack_resposta">Somos una empresa que permite tener un seguimiento en tiempo real del estado de los productos enviados.</string>
+    <string name="Com_funciona">¿Como funciona?</string>
+    <string name="Com_funciona_resposta">A cada producto se le asigna un identificador único.</string>
+    <string name="Es_segur">¿És seguro?</string>
+    <string name="Es_segur_resposta">Sí, puesto que encriptamos la información, garantizando que sólo tú puedas acceder al estado del producto.</string>
+    <string name="Per_a_qui_es">¿Para quién es este servicio?</string>
+    <string name="Per_a_qui_es_resposta">Nuestro servicio está pensado para empresas que necesiten gestionar las entregas de sus productos y para sus clientes, estar al tanto del estado de su pedido.</string>
+    <string name="Noticies">Noticias</string>
+    <string name="Contactar">Contactar</string>
+    <string name="Info_contactar">
+        <![CDATA[
+         "Si deseas contactar con nosotros para nuestros proyectos o servicios, rellena el formulario y nos pondremos en contacto con usted lo antes posible.\n\n
+        <b>Sede principal:</b> Calle de Balmes, 123, 08008<br /><br />
+        <b>Teléfono:</b> +34 938 75 32 14<br /><br />
+        <b>Email:</b> plustrack@gethelp.com"
+        ]]>
+    </string>
 </resources>
