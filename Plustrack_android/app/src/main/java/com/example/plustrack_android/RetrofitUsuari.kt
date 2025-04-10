@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitUsuari {
 
-    private const val BASE_URL = "http://172.16.24.23/"
+    private const val BASE_URL = "http://172.16.24.23:5184/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -31,20 +31,13 @@ object RetrofitUsuari {
         retrofit.create(UsuariApi::class.java)
     }
 
-    suspend fun getUser(id: Int): User {
+    /*suspend fun getUserFromDB(email: String, password: String): User {
         return try {
-            apiService.getUser(id)
+            val loginRequest = LoginRequest(email, password)
+            apiService.getUserFromDB(loginRequest)
         } catch (e: Exception) {
             throw Exception("Error en la petición: ${e.message}")
         }
-    }
-
-    suspend fun getAllUsers(): List<User> {
-        return try {
-            apiService.getAllUsers()
-        } catch (e: Exception) {
-            throw Exception("Error en la petición: ${e.message}")
-        }
-    }
+    }*/
 
 }

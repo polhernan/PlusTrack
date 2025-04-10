@@ -1,0 +1,11 @@
+para sincronizar los cambios subidos con los cambios mios:
+git pull
+
+para añadir cambios a la fotografia (commit) que quieras hacer:
+git add .
+
+para hacer el commit:
+git commit -m "mensaje titulo del commit"
+
+para que estos cambios se suban al github:
+git push

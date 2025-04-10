@@ -41,6 +41,9 @@ class IniciFragment : Fragment(R.layout.inici_fragment) {
 //        layoutParams.bottomToTop = R.id.bottomNavigationView // Ajustar la vista a la parte superior del BottomNavigationView
 //        view.findViewById<View>(R.id.cuadradoBlanco).layoutParams = layoutParams
 
+        val usuari = arguments?.getSerializable("usuari") as? User
+        Toast.makeText(requireContext(), "ESTEM A INICIFRAGMENT AMB L'USUARI " + usuari?.Name + "! OLE!", Toast.LENGTH_LONG).show()
+
         val etIdProducte: EditText = view.findViewById(R.id.etIdProducte)
 
         val btnCercar: ImageButton = view.findViewById(R.id.btnCercar)

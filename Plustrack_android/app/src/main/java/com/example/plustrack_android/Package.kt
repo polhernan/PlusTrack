@@ -4,21 +4,17 @@ import java.time.LocalDateTime
 import java.io.Serializable
 
 data class Package(
-    val id: Int,
-    val receptor: String,
-    val data_hora_estimada_entregar: LocalDateTime
+    val Id: String,
+    val Status: Int,
+    val DataEntrega: LocalDateTime,
+    val Receptor: String,
 ) : Serializable
 
     val paquetInfo = listOf(
         Package(
-            id = 1,
-            receptor = "Joan Pérez",            //any, mes, dia, hora, minuts, segons, ni idea
-            data_hora_estimada_entregar = LocalDateTime.of(2024, 4, 10, 9, 0, 0, 0),
-        )
-        ,
-        Package(
-            id = 2,
-            receptor = "Laura Martí",
-            data_hora_estimada_entregar = LocalDateTime.now().plusDays(1),
+            Id = "458742",
+            Status = 1,
+            DataEntrega = LocalDateTime.now(),
+            Receptor = "Pol Hernan Camino"
         )
     )
