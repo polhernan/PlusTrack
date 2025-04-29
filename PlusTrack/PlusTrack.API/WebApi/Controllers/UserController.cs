@@ -41,7 +41,7 @@ namespace PlusTrack.API.WebApi.Controllers
         }
 
 
-        [HttpGet("v1/users/login")]
+        [HttpPost("v1/users/login")]
         public async Task<ActionResult<User>> LoginUser(UserLoginRequest request)
         {
             var loginUserCommand = new LoginUserCommand(request.Email, request.Password);

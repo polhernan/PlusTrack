@@ -7,5 +7,8 @@
 
         public RouteStop? RouteStop { get; set; }
         public Guid? RouteStopId { get; set; }
+
+        public User? User { get; set; }
+        public Guid? UserId { get; set; }
     }
 }

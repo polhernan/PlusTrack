@@ -8,16 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PlusTrack.Forms
+namespace PlusTrack.Forms.Views
 {
-    public partial class Form1 : Form
+    public partial class EnviamentsForm : Form
     {
-        public Form1()
+        public EnviamentsForm()
         {
             InitializeComponent();
         }
 
-        private void siticoneButton1_Click(object sender, EventArgs e)
+        private void tab_enviaments_Click(object sender, EventArgs e)
         {
 
         }
