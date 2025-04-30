@@ -22,9 +22,9 @@ namespace PlusTrack.API.WebApi.Controllers
 
 
         [HttpPost("v1/users/register")]
-        public async Task<ActionResult<User>> RegisterUser(string name, string surnames, string email, string password, DateTime birthDate)
+        public async Task<ActionResult<User>> RegisterUser(string name, string surnames, string email, string password)
         {
-            var createUserCommand = new CreateUserCommand(name, surnames, email, password, birthDate);
+            var createUserCommand = new CreateUserCommand(name, surnames, email, password, DateTime.Now);
             var result = await bus.Send(createUserCommand);
             
             return Ok(result);

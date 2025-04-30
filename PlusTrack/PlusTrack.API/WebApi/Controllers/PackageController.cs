@@ -47,5 +47,23 @@ namespace PlusTrack.API.WebApi.Controllers
 
             return Ok(res);
         }
+
+        [HttpGet("v1/packages/next-package-employee/{employeeId:guid}")]
+        public async Task<ActionResult<PackageAppDto>> GetNextPackageByEmployeeId(Guid employeeId)
+        {
+            var getNextPackageByEmployeeIdQuery = new GetNextPackageByEmployeeIdQuery(employeeId);
+            PackageAppDto package = await bus.Send(getNextPackageByEmployeeIdQuery);
+
+            return Ok(package);
+        }
+
+        [HttpGet("v1/packages/package-amount/{employeeId:guid}")]
+        public async Task<ActionResult<int>> GetPackagesLeftByEmployeeId(Guid employeeId)
+        {
+            var getPackagesLedtByEmployeeId = new GetPackagesLeftAmountByEmployeeIdQuery(employeeId);
+            int amount = await bus.Send(getPackagesLedtByEmployeeId);
+
+            return Ok(amount);
+        }
     }
 }
