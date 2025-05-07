@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Employees;
 using PlusTrack.API.Application.DTOs.Employee;
 using PlusTrack.API.Application.DTOs.General;
+using PlusTrack.API.Application.DTOs.Locations;
 using PlusTrack.API.Domain.Entities;
 
 namespace PlusTrack.API.WebApi.Controllers
@@ -37,6 +38,15 @@ namespace PlusTrack.API.WebApi.Controllers
             var result = await bus.Send(loginEmployeeCommand);
 
             return Ok(result);
+        }
+
+        [HttpPost("v1/employees/add-location/{employeeId:guid}")]
+        [EndpointDescription("Adds the last location from an employee.")]
+        public async Task<ActionResult> AddLocationEmployee(Guid employeeId, LocationsDto location)
+        {
+            var addLocationEmployeeCommand = "";
+
+            return Ok();
         }
     }
 }

@@ -11,6 +11,7 @@ namespace PlusTrack.API.Application.DTOs.Employee
         public DateTime BirthDate { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public Guid? CompanyId { get; set; }
 
         [JsonConstructor]
         public EmployeeDto()
@@ -27,6 +28,7 @@ namespace PlusTrack.API.Application.DTOs.Employee
             this.BirthDate = employee.BirthDate;
             this.Email = employee.Email;
             this.Password = employee.Password;
+            this.CompanyId = employee.CompanyId;
         }
     }
 }

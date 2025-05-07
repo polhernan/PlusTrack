@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using PlusTrack.API.Domain.AbstractRepositories;
 
 namespace PlusTrack.API.Application.Commands.Routes.Handlers
@@ -18,11 +19,13 @@ namespace PlusTrack.API.Application.Commands.Routes.Handlers
 
         public async Task<List<RouteStop>> Handle(AssignRouteStopsToRouteCommand request, CancellationToken cancellationToken)
         {
-            var routeStops = _context.RouteStops.Take(request.AmountOfRouteStops ?? 20).ToList();
+            var routeStops = _context.RouteStops.Include(x => x.Package).Take(request.AmountOfRouteStops ?? 20).ToList();
 
             routeStops.ForEach(rs =>
             {
                 rs.RouteId = request.RouteId;
+                if(rs.Package != null)
+                    rs.Package.Status = 2;
             });
 
             await _context.SaveChangesAsync();

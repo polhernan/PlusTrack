@@ -65,5 +65,14 @@ namespace PlusTrack.API.WebApi.Controllers
 
             return Ok(amount);
         }
+
+        [HttpPut("v1/packages/package-status/{packageId:guid}/{status:int}")]
+        public async Task<ActionResult> UpdatePackageStatus(Guid packageId, int status)
+        {
+            var updatePackageStatusCommand = new UpdatePackageStatusCommand(packageId, status);
+            await bus.Send(updatePackageStatusCommand);
+
+            return Ok();
+        }
     }
 }

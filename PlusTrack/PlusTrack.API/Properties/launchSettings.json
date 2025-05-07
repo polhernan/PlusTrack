@@ -1,25 +1,30 @@
-﻿{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
+{
   "profiles": {
     "http": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
       "launchBrowser": true,
-        "applicationUrl": "http://172.16.24.31:5184",
       "launchUrl": "scalar",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://172.16.24.23:8085"
     },
     "https": {
-        "commandName": "Project",
-        "dotnetRunMessages": true,
-        "launchBrowser": true,
-        "applicationUrl": "https://172.16.24.23:5184;http://172.16.24.23:5184",
-        "launchUrl": "scalar",
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "scalar",
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://172.16.24.23:8081;http://172.16.24.23:8085"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/scalar",
         "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-        }
+            "ASPNETCORE_HTTPS_PORTS": "8081",
+            "ASPNETCORE_HTTP_PORTS": "8085"
+        },
+      "publishAllPorts": true,
+      "useSSL": true
     }
-  }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json"
 }
