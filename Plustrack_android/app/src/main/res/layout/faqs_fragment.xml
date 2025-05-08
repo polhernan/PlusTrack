@@ -5,18 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_color">
 
-
-    <ImageButton
-        android:id="@+id/back_arrow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/flecha_izquierda"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
-
     <TextView
         android:id="@+id/titol_fragment"
         android:layout_width="wrap_content"
@@ -69,18 +57,17 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:text="@string/Que_es_plustrack"
-        android:textSize="24dp"
+        android:textSize="18dp"
         android:fontFamily="@font/jost_bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foto_faqs"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/foto_faqs"/>
 
     <TextView
         android:id="@+id/Que_es_plustrack_resposta"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/Que_es_plustrack_resposta"
-        android:textSize="24dp"
+        android:textSize="14dp"
         android:fontFamily="@font/jost_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Que_es_plustrack"
@@ -91,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Com_funciona"
-        android:textSize="24dp"
+        android:textSize="18dp"
         android:fontFamily="@font/jost_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Que_es_plustrack_resposta"
@@ -100,10 +87,10 @@
 
     <TextView
         android:id="@+id/Com_funciona_resposta"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/Com_funciona_resposta"
-        android:textSize="24dp"
+        android:textSize="14dp"
         android:fontFamily="@font/jost_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Com_funciona"
@@ -114,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Es_segur"
-        android:textSize="24dp"
+        android:textSize="18dp"
         android:fontFamily="@font/jost_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Com_funciona_resposta"
@@ -123,10 +110,10 @@
 
     <TextView
         android:id="@+id/Es_segur_resposta"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="@string/Es_segur_resposta"
-        android:textSize="24dp"
+        android:textSize="14dp"
         android:fontFamily="@font/jost_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Es_segur"
@@ -137,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Per_a_qui_es"
-        android:textSize="24dp"
+        android:textSize="18dp"
         android:fontFamily="@font/jost_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Es_segur_resposta"
@@ -146,11 +133,11 @@
 
     <TextView
         android:id="@+id/Per_qui_resposta"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/Per_a_qui_es_resposta"
-        android:textSize="24dp"
+        android:textSize="14dp"
         android:fontFamily="@font/jost_regular"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Per_qui"/>

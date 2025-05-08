@@ -18,14 +18,12 @@ class PaquetsAdapter(
 
     class PaquetViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        var id_paquet : TextView = view.findViewById(R.id.id_paquet_seleccionat)
-        var recollida : TextView = view.findViewById(R.id.recollida)
-        val dades_receptor: TextView = view.findViewById(R.id.dades_receptor)
+        var id_paquet : TextView = view.findViewById(R.id.id_paquet)
+        var data_hora_estimada_entregar : TextView = view.findViewById(R.id.data_hora_estimada_entregar)
 
         fun bind(paquet: Package, onItemClick: (Package) -> Unit) {
             id_paquet.text = paquet.Id.toString()
-            recollida.text = paquet.DataEntrega.toString()
-            dades_receptor.text = paquet.Receptor
+            data_hora_estimada_entregar.text = paquet.DataEntrega.toString()
 
             itemView.setOnClickListener {
                 onItemClick(paquet)

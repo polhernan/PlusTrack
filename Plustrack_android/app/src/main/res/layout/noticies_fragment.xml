@@ -5,17 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_color">
 
-    <ImageButton
-        android:id="@+id/back_arrow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/flecha_izquierda"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
-
     <TextView
         android:id="@+id/titol_fragment"
         android:layout_width="wrap_content"

@@ -28,7 +28,7 @@
         android:id="@+id/titol_data_hora_estimada_entregar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Data estimada a entregar"
+        android:text="@string/Data_estimada"
         android:textSize="14sp"
         android:textStyle="bold"
         android:maxLines="3"

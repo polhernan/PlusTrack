@@ -5,17 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_color">
 
-    <ImageButton
-        android:id="@+id/back_arrow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/flecha_izquierda"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
-
     <TextView
         android:id="@+id/titol_fragment"
         android:layout_width="wrap_content"
@@ -57,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="26dp"
                 android:layout_marginTop="26dp"
-                android:text="ID del paquet"
+                android:text="@string/id_paquet"
                 android:fontFamily="@font/jost_regular"
                 app:layout_constraintTop_toTopOf="@+id/cuadradoBlanco"
                 app:layout_constraintStart_toStartOf="parent"/>
@@ -75,7 +64,7 @@
 
             <LinearLayout
                 android:id="@+id/estat_paquet"
-                android:layout_width="360dp"
+                android:layout_width="wrap_content"
                 android:layout_height="60dp"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/border_top_bottom_white"
@@ -84,104 +73,136 @@
                 app:layout_constraintTop_toBottomOf="@+id/id_paquet_seleccionat"
                 app:layout_constraintEnd_toEndOf="parent">
 
-            <LinearLayout
-                android:layout_width="325dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="16dp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/imatge_estat_1"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/tick"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/arrow_forward"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/tick"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/arrow_forward"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/cross"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/arrow_forward"
-                    android:layout_gravity="center_horizontal"/>
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/cross"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="280dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/estat_1"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:text="Recollit"/>
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/estat_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="25dp"
-                        android:text="En transit"/>
+                        <ImageView
+                            android:id="@+id/imatge_estat_1"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/tick"
+                            android:layout_gravity="center_horizontal"/>
 
-                    <TextView
-                        android:id="@+id/estat_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:text="Repartint"/>
+                        <TextView
+                            android:id="@+id/estat_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Recollit"/>
 
-                    <TextView
-                        android:id="@+id/estat_4"
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Entregat"/>
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/arrow_forward"
+                            android:layout_gravity="center_horizontal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imatge_estat_2"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/tick"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:id="@+id/estat_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/En_transit"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/arrow_forward"
+                            android:layout_gravity="center_horizontal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imatge_estat_3"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/tick"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:id="@+id/estat_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Repartint"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/arrow_forward"
+                            android:layout_gravity="center_horizontal"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imatge_estat_4"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/tick"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:id="@+id/estat_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Entregat"/>
+
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/dades_generals"
-                android:layout_width="360dp"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:background="@drawable/border_top_bottom_white"
@@ -192,7 +213,7 @@
 
                 <TextView
                     android:id="@+id/titol_recollida"
-                    android:text="Recollida estimada"
+                    android:text="@string/Data_estimada"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
@@ -210,7 +231,7 @@
 
                 <TextView
                     android:id="@+id/titol_dades_receptor"
-                    android:text="Dades receptor"
+                    android:text="@string/Dades_receptor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
