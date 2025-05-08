@@ -44,7 +44,8 @@ namespace PlusTrack.API.WebApi.Controllers
         [EndpointDescription("Adds the last location from an employee.")]
         public async Task<ActionResult> AddLocationEmployee(Guid employeeId, LocationsDto location)
         {
-            var addLocationEmployeeCommand = "";
+            var addLocationEmployeeCommand = new AddEmployeeLastLocationCommand(employeeId, location);
+            await bus.Send(addLocationEmployeeCommand);
 
             return Ok();
         }
