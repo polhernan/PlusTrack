@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Plustrack_android</string>
+    <string name="text_crear_compte">or create account</string>
+    <string name="text_fer_login">or log in</string>
     <string name="Inici">Home</string>
     <string name="Paquets">Packages</string>
     <string name="Perfil">Profile</string>
@@ -23,6 +25,31 @@
         <b>Email:</b> plustrack@gethelp.com"
         ]]>
     </string>
+    <string name="Contactar_inici">Contact with PlusTrack</string>
+    <string name="Noticies_inici">News about us</string>
+    <string name="Faqs_inici">FAQs</string>
+    <string name="id_paquet">Package ID</string>
+    <string name="Data_estimada">Estimated time to deliver</string>
+    <string name="Recollit">Picked up</string>
+    <string name="En_transit">In transit</string>
+    <string name="Repartint">Delivering</string>
+    <string name="Entregat">Delivered</string>
+    <string name="Dades_receptor">Info of reciever</string>
+    <string name="Cambiar_direccion">Change address</string>
+    <string name="Nom">Name</string>
+    <string name="Telefon">Phone number</string>
+    <string name="Missatge">Message</string>
+    <string name="Enviar">Send</string>
+    <string name="IdPaquet">Package ID</string>
+    <string name="Entrar">Enter</string>
+    <string name="Registrar">Register</string>
+    <string name="Seguent_paquet">Next package</string>
+    <string name="Detall">Details</string>
+    <string name="Total_paquets">Total packages to deliver</string>
+    <string name="Paquet_entregat">Package delivered</string>
+    <string name="Paquet_no_entregat">Package not delivered</string>
+    <string name="Tornar">Back</string>
+    <string name="Google_Maps">Send to Google Maps</string>
 
 
 </resources>

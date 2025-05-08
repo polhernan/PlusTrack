@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.logging.HttpLoggingInterceptor
 
 object RetrofitPaquet {
-    private const val BASE_URL = "http://172.16.24.30/plustrack/"
+    private const val BASE_URL = "http://172.16.24.23:8085/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
@@ -28,21 +28,5 @@ object RetrofitPaquet {
     }
     val apiService: PaquetApi by lazy {
         retrofit.create(PaquetApi::class.java)
-    }
-
-    suspend fun getPaquet(id: Int): Package {
-        return try {
-            apiService.getPaquet(id)
-        } catch (e: Exception) {
-            throw Exception("Error en la petició: ${e.message}")
-        }
-    }
-
-    suspend fun getAllPaquets(): List<Package> {
-        return try {
-            apiService.getAllPaquets()
-        } catch (e: Exception) {
-            throw Exception("Error en la petició: ${e.message}")
-        }
     }
 }

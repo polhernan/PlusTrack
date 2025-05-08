@@ -4,6 +4,8 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
 import android.util.Log
@@ -14,6 +16,8 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,22 +25,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.time.LocalDateTime
+import java.util.Locale
 
 class LoginFragment : Fragment(R.layout.login_fragment) {
-    private lateinit var userApi: UsuariApi;
+    private val userApi = RetrofitUsuari.apiService
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val gson = GsonBuilder().setLenient().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:5184/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-        userApi = retrofit.create(UsuariApi::class.java)
-
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -52,46 +49,97 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         val loginContrasenya: EditText = view.findViewById(R.id.loginContrasenya)
         val btnEntrar: TextView = view.findViewById(R.id.btnEntrar)
         val txtCrearCompte: TextView = view.findViewById(R.id.txtCrearCompte)
-        val btnNoUsuari: TextView = view.findViewById(R.id.btnNoUsuari)
 
-        val text = "o crear compte"
+        loginUsuari.setText("bbb")
+        loginContrasenya.setText("bbb")
+
+        val text = getString(R.string.text_crear_compte)
         val spannableString = SpannableString(text)
-        val start = text.indexOf("crear compte")
-        val end = start + "crear compte".length
-        spannableString.setSpan(ForegroundColorSpan(Color.CYAN), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        val keyword = when (Locale.getDefault().language) {
+            "ca" -> "crear compte"
+            "es" -> "crear cuenta"
+            "en" -> "create account"
+            else -> "crear compte"
+        }
+
+        val start = text.indexOf(keyword)
+        if (start >= 0) {
+            val end = start + keyword.length
+
+            spannableString.setSpan(ForegroundColorSpan(Color.CYAN), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannableString.setSpan(UnderlineSpan(), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        }
         txtCrearCompte.text = spannableString
 
         btnEntrar.setOnClickListener {
             val loginUsuariStr = loginUsuari.text.toString()
             val loginContrasenyaStr = loginContrasenya.text.toString()
-
             CoroutineScope(Dispatchers.IO).launch {
                 try {
                     val loginRequest = LoginRequest(
                         email = loginUsuariStr,
                         password = loginContrasenyaStr
                     )
-                    val usuarioEncontrado = userApi.getUserFromDB(loginRequest)
+                    val responseUser = userApi.getUserFromDB(loginRequest)
+                    Log.d("response", "response.code() es: " + responseUser.code())
 
                     withContext(Dispatchers.Main) {
-                        if (!usuarioEncontrado.Id.isNullOrEmpty()) {
-                            Toast.makeText(requireContext(), "Benvolgut ${usuarioEncontrado.Name}!", Toast.LENGTH_LONG).show()
+                        if (responseUser.code() == 200 && responseUser.body()?.Id?.isNotEmpty() == true) {
+                            val usuariTrobat = responseUser.body()
+                            if (usuariTrobat != null && !usuariTrobat.Id.isNullOrEmpty()) {
+                                Toast.makeText(requireContext(), "Benvolgut ${usuariTrobat.Name}!", Toast.LENGTH_LONG).show()
 
-                            val bundle = Bundle()
-                            bundle.putSerializable("usuari", usuarioEncontrado)
+                                sharedViewModel.user.value = usuariTrobat
 
-                            val fragment = IniciFragment()
-                            fragment.arguments = bundle
+                                val fragment = IniciFragment()
+                                //fragment.arguments = bundle
 
-                            parentFragmentManager.beginTransaction()
-                                .replace(R.id.fragmentContainerView, fragment)
-                                .addToBackStack(null)
-                                .commit()
-                        }
+                                parentFragmentManager.beginTransaction()
+                                    .replace(R.id.fragmentContainerView, fragment)
+                                    .addToBackStack(null)
+                                    .commit()
+                            } else {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Error: codi ${responseUser.code()}",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        } else if (responseUser.code() == 404) {
+                                try {
+                                    val responseDeliverer = userApi.getDelivererFromDB(loginRequest)
+                                    val delivererTrobat = responseDeliverer.body()
+
+                                    Toast.makeText(requireContext(),"Benvingut repartidor ${delivererTrobat?.Name}",Toast.LENGTH_LONG).show()
+
+                                        //val bundle = Bundle()
+                                        //bundle.putSerializable("usuari", delivererTrobat)
+
+                                        val sharedViewModel: SharedViewModel by activityViewModels()
+                                        sharedViewModel.deliverer.value = delivererTrobat
+
+                                        val fragment = TruckMapFragment()
+                                        //fragment.arguments = bundle
+
+                                    try {
+                                        parentFragmentManager.beginTransaction()
+                                            .replace(R.id.fragmentContainerView, fragment)
+                                            .addToBackStack(null)
+                                            .commit()
+                                    } catch (e: Exception) {
+                                        Log.e("Fragment", "Error al reemplazar el fragmento: ${e.message}", e)
+                                    }
+                                } catch (e: Exception) {
+                                    Log.e("Login", "Error al buscar repartidor: ${e.message}",e)
+                                    Toast.makeText(requireContext(), "No s'ha pogut identificar l'usuari", Toast.LENGTH_SHORT).show()
+                                }
+                        } else {
+                                Toast.makeText(requireContext(), "Error: codi ${responseUser.code()}", Toast.LENGTH_SHORT).show()
+                            }
                     }
                 } catch (e: Exception) {
-                    Log.e("getCurrentLocation", "Peticio erronea: ${e.message}", e)
+                    Log.e("Login", "Peticio erronea: ${e.message}", e)
                     withContext(Dispatchers.Main) {
                         Toast.makeText(requireContext(), "Error de connexió", Toast.LENGTH_SHORT).show()
                     }
@@ -100,15 +148,12 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         }
 
         txtCrearCompte.setOnClickListener {
+            Log.d("Entrar txtCrearCompte","hem entrat a txtCrearCompte")
             val fragment = CrearCompteFragment()
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, fragment)
                 .addToBackStack(null)
                 .commit()
-        }
-
-        btnNoUsuari.setOnClickListener {
-            Toast.makeText(requireContext(), "Botó Sense Usuari pulsat", Toast.LENGTH_SHORT).show()
         }
     }
 }

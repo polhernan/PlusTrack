@@ -5,17 +5,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_color">
 
-    <ImageButton
-        android:id="@+id/back_arrow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/flecha_izquierda"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
-
     <TextView
         android:id="@+id/titol_fragment"
         android:layout_width="wrap_content"
@@ -55,7 +44,7 @@
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/Info_contactar"
@@ -67,10 +56,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tfNom"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:hint="Nom"
+        android:hint="@string/Nom"
         android:fontFamily="@font/jost_regular"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/design_default_color_primary"
@@ -89,7 +78,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tfEmail"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:hint="Email"
@@ -111,10 +100,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tfTelefon"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:hint="Telefon"
+        android:hint="@string/Telefon"
         android:fontFamily="@font/jost_regular"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/design_default_color_primary"
@@ -133,10 +122,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tfMissatge"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:hint="Missatge"
+        android:hint="@string/Missatge"
         android:fontFamily="@font/jost_regular"
         app:hintTextColor="@color/black"
         app:boxStrokeColor="@color/design_default_color_primary"
@@ -160,7 +149,7 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
         android:background="@drawable/edittext_rounded_total"
-        android:text="Entrar"
+        android:text="@string/Enviar"
         android:textColor="#000000"
         android:textSize="18sp"
         android:padding="10dp"

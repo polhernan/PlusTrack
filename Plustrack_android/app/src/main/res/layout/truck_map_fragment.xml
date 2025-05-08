@@ -4,37 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_color">
-
-    <ImageButton
-        android:id="@+id/back_arrow"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/flecha_izquierda"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/titol_fragment"/>
-
-    <TextView
-        android:id="@+id/titol_fragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/Contactar"
-        android:fontFamily="@font/jost_bold"
-        android:textSize="24dp"
-        android:textStyle="bold"
+    <View
+        android:id="@+id/cuadradoBlanco"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0F0F0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <fragment
+        android:id="@+id/map1"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toTopOf="@+id/cuadradoBlanco"/>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/titol_fragment"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/map1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -43,31 +35,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/cuadradoBlanco"
-                android:layout_width="match_parent"
-                android:layout_height="800dp"
-                android:background="#F0F0F0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <fragment
-                android:id="@+id/map1"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                app:layout_constraintTop_toTopOf="@+id/cuadradoBlanco"/>
 
             <TextView
                 android:id="@+id/titol_seguent_paquet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="Seguent paquet"
+                android:layout_marginTop="20dp"
+                android:text="@string/Seguent_paquet"
                 android:fontFamily="@font/jost_regular"
-                app:layout_constraintTop_toBottomOf="@+id/map1"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -76,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="4568965"
+                android:text="00000000000000000"
                 android:fontFamily="@font/jost_bold"
                 app:layout_constraintTop_toBottomOf="@+id/titol_seguent_paquet"
                 app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="30dp"
                 android:background="@drawable/edittext_rounded_total"
-                android:text="Detall"
+                android:text="@string/Detall"
                 android:textColor="#000000"
                 android:textSize="18sp"
                 android:padding="10dp"
@@ -101,13 +77,31 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
+                android:id="@+id/btnGoogleMaps"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="30dp"
+                android:background="@drawable/edittext_rounded_total"
+                android:text="@string/Google_Maps"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:padding="10dp"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/jost_regular"
+                app:layout_constraintTop_toBottomOf="@+id/btnDetall"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
                 android:id="@+id/titol_total_paquets"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
-                android:text="Total de paquets a entregar: "
+                android:layout_marginTop="35dp"
+                android:text="@string/Total_paquets"
                 android:fontFamily="@font/jost_bold"
-                app:layout_constraintTop_toBottomOf="@+id/btnDetall"
+                app:layout_constraintTop_toBottomOf="@+id/btnGoogleMaps"
                 app:layout_constraintStart_toStartOf="parent"/>
 
             <TextView
