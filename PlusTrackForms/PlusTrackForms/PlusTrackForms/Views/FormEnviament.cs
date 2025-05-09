@@ -16,5 +16,10 @@ namespace PlusTrackForms.Views
         {
             InitializeComponent();
         }
+
+        private void tbFiltre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

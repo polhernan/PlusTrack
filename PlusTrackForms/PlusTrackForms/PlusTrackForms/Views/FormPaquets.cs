@@ -16,5 +16,10 @@ namespace PlusTrackForms.Views
         {
             InitializeComponent();
         }
+
+        private void FormPaquets_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

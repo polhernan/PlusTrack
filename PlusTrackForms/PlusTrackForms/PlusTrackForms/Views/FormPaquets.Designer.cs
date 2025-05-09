@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPaquets));
-            this.dgvPaquets = new System.Windows.Forms.DataGridView();
-            this.tbFiltre = new System.Windows.Forms.TextBox();
-            this.cbFiltre = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bBuscar = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.bEnviaments = new System.Windows.Forms.Button();
             this.bEmpleats = new System.Windows.Forms.Button();
@@ -41,57 +36,14 @@
             this.bRutes = new System.Windows.Forms.Button();
             this.bPaquets = new System.Windows.Forms.Button();
             this.bUbicacions = new System.Windows.Forms.Button();
-            this.bCalendari = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquets)).BeginInit();
+            this.bBuscar = new System.Windows.Forms.Button();
+            this.tbFiltre = new System.Windows.Forms.TextBox();
+            this.cbFiltre = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dgvUbicacions = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacions)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvPaquets
-            // 
-            this.dgvPaquets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPaquets.Location = new System.Drawing.Point(231, 71);
-            this.dgvPaquets.Name = "dgvPaquets";
-            this.dgvPaquets.Size = new System.Drawing.Size(680, 506);
-            this.dgvPaquets.TabIndex = 31;
-            // 
-            // tbFiltre
-            // 
-            this.tbFiltre.Location = new System.Drawing.Point(479, 35);
-            this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
-            this.tbFiltre.TabIndex = 30;
-            // 
-            // cbFiltre
-            // 
-            this.cbFiltre.FormattingEnabled = true;
-            this.cbFiltre.Location = new System.Drawing.Point(287, 33);
-            this.cbFiltre.Name = "cbFiltre";
-            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
-            this.cbFiltre.TabIndex = 29;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(228, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Filtrar per:";
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.bBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.bBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.ForeColor = System.Drawing.Color.White;
-            this.bBuscar.Location = new System.Drawing.Point(776, 27);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(95, 35);
-            this.bBuscar.TabIndex = 27;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
             // 
             // flowLayoutPanel1
             // 
@@ -102,12 +54,11 @@
             this.flowLayoutPanel1.Controls.Add(this.bRutes);
             this.flowLayoutPanel1.Controls.Add(this.bPaquets);
             this.flowLayoutPanel1.Controls.Add(this.bUbicacions);
-            this.flowLayoutPanel1.Controls.Add(this.bCalendari);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(210, 589);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(210, 521);
             this.flowLayoutPanel1.TabIndex = 26;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -237,55 +188,76 @@
             this.bUbicacions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bUbicacions.UseVisualStyleBackColor = true;
             // 
-            // bCalendari
+            // bBuscar
             // 
-            this.bCalendari.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.bCalendari.FlatAppearance.BorderSize = 0;
-            this.bCalendari.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bCalendari.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.bCalendari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bCalendari.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bCalendari.ForeColor = System.Drawing.Color.White;
-            this.bCalendari.Image = ((System.Drawing.Image)(resources.GetObject("bCalendari.Image")));
-            this.bCalendari.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bCalendari.Location = new System.Drawing.Point(0, 507);
-            this.bCalendari.Margin = new System.Windows.Forms.Padding(0, 15, 15, 15);
-            this.bCalendari.Name = "bCalendari";
-            this.bCalendari.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.bCalendari.Size = new System.Drawing.Size(210, 52);
-            this.bCalendari.TabIndex = 23;
-            this.bCalendari.Text = "          Calendari";
-            this.bCalendari.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bCalendari.UseVisualStyleBackColor = true;
+            this.bBuscar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.ForeColor = System.Drawing.Color.White;
+            this.bBuscar.Location = new System.Drawing.Point(772, 7);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(95, 35);
+            this.bBuscar.TabIndex = 66;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            // 
+            // tbFiltre
+            // 
+            this.tbFiltre.Location = new System.Drawing.Point(505, 15);
+            this.tbFiltre.Name = "tbFiltre";
+            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
+            this.tbFiltre.TabIndex = 65;
+            // 
+            // cbFiltre
+            // 
+            this.cbFiltre.FormattingEnabled = true;
+            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
+            this.cbFiltre.Name = "cbFiltre";
+            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
+            this.cbFiltre.TabIndex = 64;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(231, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Filtrar per:";
+            // 
+            // dgvUbicacions
+            // 
+            this.dgvUbicacions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUbicacions.Location = new System.Drawing.Point(234, 53);
+            this.dgvUbicacions.Name = "dgvUbicacions";
+            this.dgvUbicacions.Size = new System.Drawing.Size(677, 456);
+            this.dgvUbicacions.TabIndex = 62;
             // 
             // FormPaquets
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 589);
-            this.Controls.Add(this.dgvPaquets);
+            this.ClientSize = new System.Drawing.Size(923, 521);
+            this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.tbFiltre);
             this.Controls.Add(this.cbFiltre);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.bBuscar);
+            this.Controls.Add(this.dgvUbicacions);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormPaquets";
             this.Text = "FormPaquets";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquets)).EndInit();
+            this.Load += new System.EventHandler(this.FormPaquets_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        public System.Windows.Forms.DataGridView dgvPaquets;
-        public System.Windows.Forms.TextBox tbFiltre;
-        public System.Windows.Forms.ComboBox cbFiltre;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button bBuscar;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.Button bEnviaments;
         public System.Windows.Forms.Button bEmpleats;
@@ -293,6 +265,10 @@
         public System.Windows.Forms.Button bRutes;
         public System.Windows.Forms.Button bPaquets;
         public System.Windows.Forms.Button bUbicacions;
-        public System.Windows.Forms.Button bCalendari;
+        public System.Windows.Forms.Button bBuscar;
+        public System.Windows.Forms.TextBox tbFiltre;
+        public System.Windows.Forms.ComboBox cbFiltre;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.DataGridView dgvUbicacions;
     }
 }
