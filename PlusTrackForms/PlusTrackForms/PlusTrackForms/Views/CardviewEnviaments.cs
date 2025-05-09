@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class FormCalendari : Form
+    public partial class CardviewEnviaments : UserControl
     {
-        public FormCalendari()
+        public CardviewEnviaments()
         {
             InitializeComponent();
         }

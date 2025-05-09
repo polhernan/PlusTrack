@@ -8,23 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PlusTrackForms
+namespace PlusTrackForms.Views
 {
-    public partial class FormEnviaments : Form
+    public partial class FormRutas : Form
     {
-        public FormEnviaments()
+        public FormRutas()
         {
             InitializeComponent();
-        }
-
-        private void siticoneTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

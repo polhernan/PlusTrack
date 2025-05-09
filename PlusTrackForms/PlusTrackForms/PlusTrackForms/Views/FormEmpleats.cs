@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PlusTrackForms
+namespace PlusTrackForms.Views
 {
     public partial class FormEmpleats : Form
     {

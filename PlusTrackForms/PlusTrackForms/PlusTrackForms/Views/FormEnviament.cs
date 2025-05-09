@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class FormRuta : Form
+    public partial class FormEnviament : Form
     {
-        public FormRuta()
+        public FormEnviament()
         {
             InitializeComponent();
         }

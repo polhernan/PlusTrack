@@ -21,7 +21,7 @@ namespace PlusTrackForms.Controler
 
         private void SetListeners()
         {
-            fenviaments.bUbicacions.Click +=
+            //fenviaments.bUbicacions.Click += 
         }
 
         private void LoadData()
