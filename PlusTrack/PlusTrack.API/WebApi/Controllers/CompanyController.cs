@@ -62,4 +62,13 @@ public class CompanyController : Controller
 
         return Ok();
     }
+
+    [HttpGet("v1/companies/{companyEmail}/license")]
+    public async Task<ActionResult<Guid>> GetCompanyIdByEmail(String companyEmail)
+    {
+        var getCompanyGuidByEmailQuery = new GetCompanyIdByEmailQuery(companyEmail);
+        Guid companyId = await bus.Send(getCompanyGuidByEmailQuery);
+        
+        return companyId;
+    }
 }
