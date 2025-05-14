@@ -5,6 +5,10 @@ using PlusTrack.API.Application.Commands.Packages;
 using PlusTrack.API.Application.DTOs.Packages;
 using PlusTrack.API.Application.Queries.Packages;
 
+// using PlusTrack.API.Application.Commands.Packages;
+// using PlusTrack.API.Application.DTOs.Packages;
+// using PlusTrack.API.Application.Queries.Packages;
+
 namespace PlusTrack.API.WebApi.Controllers
 {
     [ApiController]
@@ -44,34 +48,34 @@ namespace PlusTrack.API.WebApi.Controllers
         {
             var getPackagesByUserIdQuery = new GetPackagesByUserIdQuery(userId);
             List<PackageAppDto> res = await bus.Send(getPackagesByUserIdQuery);
-
+            
             return Ok(res);
         }
-
+        
         [HttpGet("v1/packages/next-package-employee/{employeeId:guid}")]
         public async Task<ActionResult<PackageAppDto>> GetNextPackageByEmployeeId(Guid employeeId)
         {
             var getNextPackageByEmployeeIdQuery = new GetNextPackageByEmployeeIdQuery(employeeId);
             PackageAppDto package = await bus.Send(getNextPackageByEmployeeIdQuery);
-
+        
             return Ok(package);
         }
-
+        
         [HttpGet("v1/packages/package-amount/{employeeId:guid}")]
         public async Task<ActionResult<int>> GetPackagesLeftByEmployeeId(Guid employeeId)
         {
             var getPackagesLedtByEmployeeId = new GetPackagesLeftAmountByEmployeeIdQuery(employeeId);
             int amount = await bus.Send(getPackagesLedtByEmployeeId);
-
+        
             return Ok(amount);
         }
-
+        
         [HttpPut("v1/packages/package-status/{packageId:guid}/{status:int}")]
         public async Task<ActionResult> UpdatePackageStatus(Guid packageId, int status)
         {
             var updatePackageStatusCommand = new UpdatePackageStatusCommand(packageId, status);
             await bus.Send(updatePackageStatusCommand);
-
+        
             return Ok();
         }
     }
