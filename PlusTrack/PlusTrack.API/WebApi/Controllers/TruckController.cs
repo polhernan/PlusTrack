@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Employees;
 using PlusTrack.API.Application.Commands.Trucks;
 using PlusTrack.API.Application.DTOs.Trucks;
+using PlusTrack.API.Application.Queries.Trucks;
 
 namespace PlusTrack.API.WebApi.Controllers
 {
@@ -36,6 +37,15 @@ namespace PlusTrack.API.WebApi.Controllers
             await bus.Send(addNewTrackingLocation);
 
             return Ok();
+        }
+
+        [HttpGet("v1/trucks/by-company/{companyId:Guid}")]
+        public async Task<ActionResult<List<Truck>>> GetTrucksByCompanyId(Guid companyId)
+        {
+            var getTrucksByCompanyId = new GetAllTrucksByCompanyIdQuery(companyId);
+            var result =  await bus.Send(getTrucksByCompanyId);
+            
+            return Ok(result);
         }
     }
 }
