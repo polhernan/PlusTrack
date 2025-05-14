@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Routes;
 using PlusTrack.API.Application.Commands.RouteStops;
+using PlusTrack.API.Application.Queries.Routes;
+using Route = PlusTrack.API.Domain.Entities.Route;
 
 namespace PlusTrack.API.WebApi.Controllers
 {
@@ -49,6 +51,15 @@ namespace PlusTrack.API.WebApi.Controllers
             var result = await bus.Send(assignRouteStopsToRouteCommand);
 
             return result;
+        }
+
+        [HttpGet("v1/route/get-routes/{companyId:Guid}")]
+        public async Task<List<Route>> GetRoutesByCompanyId(Guid companyId)
+        {
+            var getAllRoutesByCompanyIdQuery = new GetAllRoutesByCompanyIdQuery(companyId);
+            var routes = await bus.Send(getAllRoutesByCompanyIdQuery);
+            
+            return routes;
         }
 
     }
