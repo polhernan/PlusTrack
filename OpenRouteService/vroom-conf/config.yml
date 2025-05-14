@@ -1,0 +1,70 @@
+cliArgs:
+  geometry: false # retrieve geometry (-g)
+  planmode: false # run vroom in plan mode (-c) if set to true
+  threads: 4 # number of threads to use (-t)
+  explore: 5 # exploration level to use (0..5) (-x)
+  limit: '1mb' # max request size
+  logdir: '/..' # the path for the logs relative to ./src
+  logsize: '100M' # max log file size for rotation
+  maxlocations: 1000 # max number of jobs/shipments locations
+  maxvehicles: 200 # max number of vehicles
+  override: true # allow cli options override (-c, -g, -t and -x)
+  path: '' # VROOM path (if not in $PATH)
+  port: 3000 # expressjs port
+  router: 'osrm' # routing backend (osrm, libosrm or ors)
+  timeout: 300000 # milli-seconds
+  baseurl: '/' #base url for api
+routingServers:
+  ors:
+    driving-car:
+      host: '172.28.0.2'
+      port: '8082'
+    driving-hgv:
+      host: '172.28.0.2'
+      port: '8082'
+    cycling-regular:
+      host: '172.28.0.2'
+      port: '8082'
+    cycling-mountain:
+      host: '172.28.0.2'
+      port: '8082'
+    cycling-road:
+      host: '172.28.0.2'
+      port: '8082'
+    cycling-electric:
+      host: '172.28.0.2'
+      port: '8082'
+    foot-walking:
+      host: '172.28.0.2'
+      port: '8082'
+    foot-hiking:
+      host: '172.28.0.2'
+      port: '8082'
+  valhalla:
+    auto:
+      host: '172.28.0.2'
+      port: '8002'
+    bicycle:
+      host: '172.28.0.2'
+      port: '8002'
+    pedestrian:
+      host: '172.28.0.2'
+      port: '8002'
+    motorcycle:
+      host: '172.28.0.2'
+      port: '8002'
+    motor_scooter:
+      host: '172.28.0.2'
+      port: '8002'
+    taxi:
+      host: '172.28.0.2'
+      port: '8002'
+    hov:
+      host: '172.28.0.2'
+      port: '8002'
+    truck:
+      host: '172.28.0.2'
+      port: '8002'
+    bus:
+      host: '172.28.0.2'
+      port: '8002'
