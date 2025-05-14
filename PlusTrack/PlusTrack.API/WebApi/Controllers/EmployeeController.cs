@@ -4,6 +4,7 @@ using PlusTrack.API.Application.Commands.Employees;
 using PlusTrack.API.Application.DTOs.Employee;
 using PlusTrack.API.Application.DTOs.General;
 using PlusTrack.API.Application.DTOs.Locations;
+using PlusTrack.API.Application.Queries.Employees;
 using PlusTrack.API.Domain.Entities;
 
 namespace PlusTrack.API.WebApi.Controllers
@@ -48,6 +49,15 @@ namespace PlusTrack.API.WebApi.Controllers
             await bus.Send(addLocationEmployeeCommand);
 
             return Ok();
+        }
+
+        [HttpGet("v1/employees/by-company/{companyId:guid}")]
+        public async Task<ActionResult<List<Employee>>> GetEmployeesByCompanyId(Guid companyId)
+        {
+            var getEmployeesByCompanyIdQuery = new GetAllEmployeesByCompanyQuery(companyId);
+            var employees = await bus.Send(getEmployeesByCompanyIdQuery);
+            
+            return Ok(employees);
         }
     }
 }
