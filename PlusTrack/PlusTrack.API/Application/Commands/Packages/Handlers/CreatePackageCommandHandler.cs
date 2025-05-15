@@ -37,8 +37,11 @@ public class CreatePackageCommandHandler : IRequestHandler<CreatePackageCommand,
             Id = Guid.NewGuid(),
             Status = (int)PackageStatus.Creado,
             UserId = request.Request.UserId,
-            RouteStopId = newRouteStop.Id
+            RouteStopId = newRouteStop.Id,
+            CompanyId = request.Request.CompanyId,
         };
+        
+        newRouteStop.PackageId = newPackage.Id;
         
         _context.Locations.Add(newLocation);
         _context.RouteStops.Add(newRouteStop);

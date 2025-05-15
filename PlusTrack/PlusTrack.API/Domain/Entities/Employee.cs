@@ -35,6 +35,7 @@ namespace PlusTrack.API.Domain.Entities
             this.BirthDate = snapshot.BirthDate;
             this.Email = snapshot.Email;
             this.Password = Crypter.Hash(snapshot.Password);
+            this.CompanyId = snapshot.CompanyId;
         }
     }
 }

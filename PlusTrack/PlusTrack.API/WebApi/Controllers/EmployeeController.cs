@@ -59,5 +59,16 @@ namespace PlusTrack.API.WebApi.Controllers
             
             return Ok(employees);
         }
+
+        [HttpGet("v1/employees/by-company-available/{companyId:guid}")]
+        public async Task<ActionResult<List<Employee>>> GetEmployeesAvailableByCompanyId(Guid companyId)
+        {
+            var getEmployeesByCompanyIdQuery = new GetAllEmployeesByCompanyQuery(companyId);
+            var employees = await bus.Send(getEmployeesByCompanyIdQuery);
+            
+            employees = employees.Where(x => !x.Routes.Where(y => y.Dia.Date.Equals(DateTime.Now.Date)).Any()).ToList();
+            
+            return Ok(employees);
+        }
     }
 }

@@ -78,5 +78,14 @@ namespace PlusTrack.API.WebApi.Controllers
         
             return Ok();
         }
+
+        [HttpGet("v1/packages/by-company/{companyId:guid}")]
+        public async Task<ActionResult<List<Package>>> GetPackageByCompanyId(Guid companyId)
+        {
+            var getPackagesByCompanyIdQuery = new GetPackagesByCompanyIdQuery(companyId);
+            var packages = await bus.Send(getPackagesByCompanyIdQuery);
+            
+            return Ok(packages);
+        }
     }
 }

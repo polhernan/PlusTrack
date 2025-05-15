@@ -10,5 +10,8 @@
 
         public User? User { get; set; }
         public Guid? UserId { get; set; }
+        
+        public Company? Company { get; set; }
+        public Guid? CompanyId { get; set; }
     }
 }

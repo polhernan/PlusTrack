@@ -15,6 +15,7 @@ namespace PlusTrack.API.Domain.Entities
         public IEnumerable<Employee>? Employees { get; set; }
 
         public IEnumerable<Truck>? Trucks { get; set; }
+        public IEnumerable<Package>? Packages { get; set; }
 
 
         private Company()
@@ -25,7 +26,7 @@ namespace PlusTrack.API.Domain.Entities
 
         public Company(CompanyDto snapshot)
         {
-            Id = Guid.NewGuid();
+            Id = snapshot.CompanyId ?? Guid.NewGuid();
             Name = snapshot.Name;
             Email = snapshot.Email;
         }

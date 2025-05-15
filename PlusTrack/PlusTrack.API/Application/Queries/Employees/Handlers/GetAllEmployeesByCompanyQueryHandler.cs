@@ -1,5 +1,6 @@
 ﻿
 using Conditions;
+using Microsoft.EntityFrameworkCore;
 using PlusTrack.API.Domain.AbstractRepositories;
 
 namespace PlusTrack.API.Application.Queries.Employees.Handlers
@@ -20,7 +21,7 @@ namespace PlusTrack.API.Application.Queries.Employees.Handlers
         {
             request.CompanyId.Requires().IsNotEqualTo(Guid.Empty);
 
-            IEnumerable<Employee> employees = _context.Employees.Where(x => x.CompanyId.Equals(request.CompanyId));
+            IEnumerable<Employee> employees = _context.Employees.Include(x => x.Routes).Where(x => x.CompanyId.Equals(request.CompanyId)).ToList();
 
             return Task.FromResult(employees);
         }
