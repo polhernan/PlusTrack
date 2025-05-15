@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormUbicacions));
-            this.dgvUbicacions = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.bEnviaments = new System.Windows.Forms.Button();
             this.bEmpleats = new System.Windows.Forms.Button();
@@ -37,21 +36,11 @@
             this.bRutes = new System.Windows.Forms.Button();
             this.bPaquets = new System.Windows.Forms.Button();
             this.bUbicacions = new System.Windows.Forms.Button();
-            this.bBuscar = new System.Windows.Forms.Button();
-            this.tbFiltre = new System.Windows.Forms.TextBox();
-            this.cbFiltre = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacions)).BeginInit();
+            this.bActualitzar = new System.Windows.Forms.Button();
+            this.wvMap = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.wvMap)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvUbicacions
-            // 
-            this.dgvUbicacions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUbicacions.Location = new System.Drawing.Point(234, 53);
-            this.dgvUbicacions.Name = "dgvUbicacions";
-            this.dgvUbicacions.Size = new System.Drawing.Size(677, 456);
-            this.dgvUbicacions.TabIndex = 37;
             // 
             // flowLayoutPanel1
             // 
@@ -74,8 +63,8 @@
             // 
             this.bEnviaments.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bEnviaments.FlatAppearance.BorderSize = 0;
-            this.bEnviaments.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bEnviaments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bEnviaments.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bEnviaments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bEnviaments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEnviaments.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEnviaments.ForeColor = System.Drawing.Color.White;
@@ -95,8 +84,8 @@
             // 
             this.bEmpleats.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bEmpleats.FlatAppearance.BorderSize = 0;
-            this.bEmpleats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bEmpleats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bEmpleats.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bEmpleats.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bEmpleats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bEmpleats.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bEmpleats.ForeColor = System.Drawing.Color.White;
@@ -116,8 +105,8 @@
             // 
             this.bCamions.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bCamions.FlatAppearance.BorderSize = 0;
-            this.bCamions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bCamions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bCamions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bCamions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bCamions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bCamions.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bCamions.ForeColor = System.Drawing.Color.White;
@@ -137,8 +126,8 @@
             // 
             this.bRutes.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bRutes.FlatAppearance.BorderSize = 0;
-            this.bRutes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bRutes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bRutes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bRutes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bRutes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bRutes.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bRutes.ForeColor = System.Drawing.Color.White;
@@ -158,8 +147,8 @@
             // 
             this.bPaquets.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bPaquets.FlatAppearance.BorderSize = 0;
-            this.bPaquets.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bPaquets.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bPaquets.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bPaquets.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bPaquets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bPaquets.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPaquets.ForeColor = System.Drawing.Color.White;
@@ -177,10 +166,11 @@
             // 
             // bUbicacions
             // 
+            this.bUbicacions.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.bUbicacions.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bUbicacions.FlatAppearance.BorderSize = 0;
-            this.bUbicacions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bUbicacions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.bUbicacions.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightSkyBlue;
+            this.bUbicacions.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.bUbicacions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bUbicacions.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bUbicacions.ForeColor = System.Drawing.Color.White;
@@ -194,71 +184,52 @@
             this.bUbicacions.TabIndex = 22;
             this.bUbicacions.Text = "          Ubicacions";
             this.bUbicacions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bUbicacions.UseVisualStyleBackColor = true;
+            this.bUbicacions.UseVisualStyleBackColor = false;
             // 
-            // bBuscar
+            // bActualitzar
             // 
-            this.bBuscar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.bBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.bBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.ForeColor = System.Drawing.Color.White;
-            this.bBuscar.Location = new System.Drawing.Point(772, 7);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(95, 35);
-            this.bBuscar.TabIndex = 61;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
+            this.bActualitzar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bActualitzar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bActualitzar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bActualitzar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bActualitzar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bActualitzar.ForeColor = System.Drawing.Color.White;
+            this.bActualitzar.Location = new System.Drawing.Point(234, 7);
+            this.bActualitzar.Name = "bActualitzar";
+            this.bActualitzar.Size = new System.Drawing.Size(95, 35);
+            this.bActualitzar.TabIndex = 61;
+            this.bActualitzar.Text = "Acualitzar";
+            this.bActualitzar.UseVisualStyleBackColor = false;
             // 
-            // tbFiltre
+            // wvMap
             // 
-            this.tbFiltre.Location = new System.Drawing.Point(505, 15);
-            this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
-            this.tbFiltre.TabIndex = 60;
-            // 
-            // cbFiltre
-            // 
-            this.cbFiltre.FormattingEnabled = true;
-            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
-            this.cbFiltre.Name = "cbFiltre";
-            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
-            this.cbFiltre.TabIndex = 59;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(231, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Filtrar per:";
+            this.wvMap.AllowExternalDrop = true;
+            this.wvMap.CreationProperties = null;
+            this.wvMap.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.wvMap.Location = new System.Drawing.Point(234, 48);
+            this.wvMap.Name = "wvMap";
+            this.wvMap.Size = new System.Drawing.Size(677, 461);
+            this.wvMap.TabIndex = 62;
+            this.wvMap.ZoomFactor = 1D;
             // 
             // FormUbicacions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 521);
-            this.Controls.Add(this.bBuscar);
-            this.Controls.Add(this.tbFiltre);
-            this.Controls.Add(this.cbFiltre);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvUbicacions);
+            this.Controls.Add(this.wvMap);
+            this.Controls.Add(this.bActualitzar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormUbicacions";
             this.Text = "FormUbicacions";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacions)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.wvMap)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        public System.Windows.Forms.DataGridView dgvUbicacions;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.Button bEnviaments;
         public System.Windows.Forms.Button bEmpleats;
@@ -266,9 +237,7 @@
         public System.Windows.Forms.Button bRutes;
         public System.Windows.Forms.Button bPaquets;
         public System.Windows.Forms.Button bUbicacions;
-        public System.Windows.Forms.Button bBuscar;
-        public System.Windows.Forms.TextBox tbFiltre;
-        public System.Windows.Forms.ComboBox cbFiltre;
-        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button bActualitzar;
+        public Microsoft.Web.WebView2.WinForms.WebView2 wvMap;
     }
 }

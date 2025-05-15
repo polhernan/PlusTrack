@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mapa</title>
+    <style>
+        #map {
+            height: 100vh;
+            width: 100%;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmAp9JqdPEq9Cw4wVrFkE_Q_3kssA5OtI&callback=initMap"
+            async defer>
+    </script>
+    <script>
+        var map;
+        var marker;
+
+        function initMap() {
+            var centro = { lat: 41.3851, lng: 2.1734 }; // Barcelona
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: centro
+            });
+            chrome.webview.postMessage("Mapa listo");
+        }
+
+        var markers = [];
+
+        function putMarker(latFinal, lngFinal, plate) {
+            var marker = new google.maps.Marker({
+                position: { lat: latFinal, lng: lngFinal },
+                map: map,
+                title: plate,
+                icon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            });
+            markers.push(marker);
+        }
+    </script>
+
+</head>
+<body>
+    <div id="map"></div>
+</body>
+</html>

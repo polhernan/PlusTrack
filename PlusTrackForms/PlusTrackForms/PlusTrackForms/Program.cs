@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PlusTrackForms.Controler;
+using PlusTrackForms.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace PlusTrackForms
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormEnviaments());
+            new LoginController();
         }
     }
 }

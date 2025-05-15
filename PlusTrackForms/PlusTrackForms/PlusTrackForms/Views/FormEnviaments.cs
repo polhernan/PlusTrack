@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class FormUbicacions : Form
+    public partial class FormEnviaments : Form
     {
-        public FormUbicacions()
+        public FormEnviaments()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void tbFiltre_TextChanged(object sender, EventArgs e)
         {
 
         }
