@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using PlusTrack.API.Application.DTOs.Trucks;
 using PlusTrack.API.Domain.AbstractRepositories;
 
 namespace PlusTrack.API.Application.Queries.Trucks.Handlers
 {
-    public class GetAllTrucksByCompanyIdQueryHandler : IRequestHandler<GetAllTrucksByCompanyIdQuery, IEnumerable<TruckDto>>
+    public class GetAllTrucksByCompanyIdQueryHandler : IRequestHandler<GetAllTrucksByCompanyIdQuery, IEnumerable<Truck>>
     {
 
 
@@ -17,11 +18,11 @@ namespace PlusTrack.API.Application.Queries.Trucks.Handlers
         }
 
 
-        public Task<IEnumerable<TruckDto>> Handle(GetAllTrucksByCompanyIdQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<Truck>> Handle(GetAllTrucksByCompanyIdQuery request, CancellationToken cancellationToken)
         {
-            IEnumerable<TruckDto> trucks = _context.Trucks
+            IEnumerable<Truck> trucks = _context.Trucks
+                .Include(x => x.Routes)
                 .Where(x => x.CompanyId.Equals(request.CompanyId))
-                .Select(x => new TruckDto(x))
                 .ToList();
 
             return Task.FromResult(trucks);

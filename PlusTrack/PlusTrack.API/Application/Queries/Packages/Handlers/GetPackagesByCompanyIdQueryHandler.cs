@@ -21,11 +21,8 @@ public class GetPackagesByCompanyIdQueryHandler : IRequestHandler<GetPackagesByC
         var packages = _context.Packages
             .Include(x => x.User)
             .Include(x => x.RouteStop)
-                .ThenInclude(x => x.Route)
-                .ThenInclude(x => x.Truck)
-            .Include(x => x.RouteStop)
                 .ThenInclude(x => x.Location)
-            .Where(x => x.RouteStop.Route.Truck.CompanyId == request.CompanyId)
+            .Where(x => x.CompanyId == request.CompanyId)
             .ToList();
         
         return Task.FromResult(packages);

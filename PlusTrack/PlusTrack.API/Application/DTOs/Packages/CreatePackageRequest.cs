@@ -8,4 +8,5 @@ public class CreatePackageRequest
     public Guid UserId { get; set; }
     
     [Required] public LocationsDto Location { get; set; }
+    [Required] public Guid CompanyId { get; set; }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PlusTrack.API.Application.Commands.Routes;
 using PlusTrack.API.Application.Commands.RouteStops;
+using PlusTrack.API.Application.DTOs.Routes;
 using PlusTrack.API.Application.Queries.Routes;
 using Route = PlusTrack.API.Domain.Entities.Route;
 
@@ -57,9 +58,27 @@ namespace PlusTrack.API.WebApi.Controllers
         public async Task<ActionResult<List<Route>>> GetRoutesByCompanyId(Guid companyId)
         {
             var getAllRoutesByCompanyIdQuery = new GetAllRoutesByCompanyIdQuery(companyId);
-            var routes = await bus.Send(getAllRoutesByCompanyIdQuery);
+            var routes = (await bus.Send(getAllRoutesByCompanyIdQuery));
             
             return Ok(routes);
+        }
+
+        [HttpPost("v1/route/create-route-assign-all")]
+        public async Task<ActionResult<bool>> CreateRouteAssignAll(CreateRouteRequest request)
+        {
+            var createRouteCommand = new CreateRouteCommand(DateTime.Now.Date);
+
+            var route = await bus.Send(createRouteCommand);
+            
+            if(route == null)
+                throw new Exception("Error creating route");
+            
+            var routeStops = (await AssignRouteStops(route.Id,request.AmountStops)).Value;
+            
+            var assignEmployeeTruckToRoute = new AssignEmployeeTruckToRouteCommand(request.EmployeeId,request.TruckId,route.Id);
+            await bus.Send(assignEmployeeTruckToRoute);
+            
+            return Ok(true);
         }
 
     }
