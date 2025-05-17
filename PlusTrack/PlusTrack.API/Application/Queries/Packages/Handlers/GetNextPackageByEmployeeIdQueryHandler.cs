@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PlusTrack.API.Application.Commands.Packages;
 using PlusTrack.API.Application.DTOs.Locations;
 using PlusTrack.API.Application.DTOs.Packages;
 using PlusTrack.API.Domain.AbstractRepositories;
@@ -11,15 +12,17 @@ public class GetNextPackageByEmployeeIdQueryHandler : IRequestHandler<GetNextPac
     
     
     private readonly PlusTrackDbContext _context;
+    private readonly IMediator _bus;
 
 
-    public GetNextPackageByEmployeeIdQueryHandler(PlusTrackDbContext context)
+    public GetNextPackageByEmployeeIdQueryHandler(PlusTrackDbContext context, IMediator bus)
     {
         _context = context;
+        _bus = bus;
     }
     
     
-    public Task<PackageAppDto> Handle(GetNextPackageByEmployeeIdQuery request, CancellationToken cancellationToken)
+    public async Task<PackageAppDto> Handle(GetNextPackageByEmployeeIdQuery request, CancellationToken cancellationToken)
     {
         var employee = _context.Employees
             .Include(x => x.Routes)
@@ -38,17 +41,17 @@ public class GetNextPackageByEmployeeIdQueryHandler : IRequestHandler<GetNextPac
         
         if(route == null)
             throw new EntityNotFoundException($"Today route for the employee with id {request.EmployeeId} does not exist");
-
+        
         Package package = route.RouteStops
-            .Where(x => x.Package.Status == (int)PackageStatus.EnReparto)
-            .OrderBy(x => x.StopOrder)
-            .FirstOrDefault()
-            .Package;
+                .Where(x => x.Package.Status == (int)PackageStatus.EnReparto)
+                .OrderBy(x => x.StopOrder)
+                .FirstOrDefault()
+                .Package;
         
         if(package == null)
             throw new EntityNotFoundException($"Today package for the employee with id {request.EmployeeId} does not exist");
         
-        return Task.FromResult(new PackageAppDto()
+        return new PackageAppDto()
         {
             Id = package.Id,
             Status = package.Status,
@@ -58,6 +61,6 @@ public class GetNextPackageByEmployeeIdQueryHandler : IRequestHandler<GetNextPac
                 Latitude = package.RouteStop.Location.Latitude,
                 Longitude = package.RouteStop.Location.Longitude,
             },
-        });
+        };
     }
 }

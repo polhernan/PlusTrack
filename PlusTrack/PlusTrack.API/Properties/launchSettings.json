@@ -5,14 +5,14 @@
       "launchBrowser": true,
       "launchUrl": "scalar",
       "dotnetRunMessages": true,
-      "applicationUrl": "http://172.16.24.175:8085" //,"http://192.168.0.11:8085"
+      "applicationUrl": "http://localhost:8085"//,"http://172.16.24.175:8085" 
     },
     "https": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "scalar",
       "dotnetRunMessages": true,
-      "applicationUrl": "https://172.16.24.175:8081;http://172.16.24.175:8085" // "https://192.168.0.11:8081;http://192.168.0.11:8085" 
+      "applicationUrl": "https://localhost:8081;http://localhost:8085"  //"https://172.16.24.175:8081;http://172.16.24.175:8085" 
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
