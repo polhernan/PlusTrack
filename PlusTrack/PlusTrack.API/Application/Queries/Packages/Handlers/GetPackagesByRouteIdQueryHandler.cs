@@ -1,0 +1,33 @@
+using Microsoft.EntityFrameworkCore;
+using PlusTrack.API.Domain.AbstractRepositories;
+using Route = PlusTrack.API.Domain.Entities.Route;
+
+namespace PlusTrack.API.Application.Queries.Packages.Handlers;
+
+public class GetPackagesByRouteIdQueryHandler : IRequestHandler<GetPackagesByRouteIdQuery, List<Package>>
+{
+    
+    
+    private readonly PlusTrackDbContext _context;
+
+    
+    public GetPackagesByRouteIdQueryHandler(PlusTrackDbContext context)
+    {
+        _context = context;
+    }
+    
+    
+    public Task<List<Package>> Handle(GetPackagesByRouteIdQuery request, CancellationToken cancellationToken)
+    {
+        Route route = _context.Routes
+            .Include(x => x.RouteStops)
+            .ThenInclude(x => x.Package)
+            .Include(x => x.RouteStops)
+            .FirstOrDefault(x => x.Id == request.RouteId);
+        
+        if(route == null)
+            throw new EntityNotFoundException("Route with id " + request.RouteId + " not found");
+        
+        return Task.FromResult(route.RouteStops.Select(x => x.Package).ToList());
+    }
+}

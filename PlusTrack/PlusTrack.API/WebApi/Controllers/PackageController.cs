@@ -87,5 +87,14 @@ namespace PlusTrack.API.WebApi.Controllers
             
             return Ok(packages);
         }
+
+        [HttpGet("v1/packages/by-route/{routeId:guid}")]
+        public async Task<ActionResult<List<Package>>> GetPackagesByRouteId(Guid routeId)
+        {
+            var getPackagesByRouteIdQuery = new GetPackagesByRouteIdQuery(routeId);
+            var packages = await bus.Send(getPackagesByRouteIdQuery);
+            
+            return Ok(packages);
+        }
     }
 }
