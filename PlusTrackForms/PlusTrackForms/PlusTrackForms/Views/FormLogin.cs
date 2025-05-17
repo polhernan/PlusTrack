@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class FormEnviament : Form
+    public partial class FormLogin : Form
     {
-        public FormEnviament()
+        public FormLogin()
         {
             InitializeComponent();
         }
 
-        private void tbFiltre_TextChanged(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
 
         }

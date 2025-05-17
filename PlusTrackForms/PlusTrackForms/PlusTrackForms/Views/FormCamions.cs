@@ -16,5 +16,10 @@ namespace PlusTrackForms.Views
         {
             InitializeComponent();
         }
+
+        private void dgvCamions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

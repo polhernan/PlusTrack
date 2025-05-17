@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class FormRutas : Form
+    public partial class FormRutes : Form
     {
-        public FormRutas()
+        public FormRutes()
         {
             InitializeComponent();
+        }
+
+        private void dgvConductors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
