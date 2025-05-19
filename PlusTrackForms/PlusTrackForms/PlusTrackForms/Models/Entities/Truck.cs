@@ -13,5 +13,6 @@ namespace PlusTrackForms.Models.Entities
         public DateTime LastItv { get; set; }
         public DateTime NextItv { get; set; }
         public int Capacity { get; set; }
+        public string companyId { get; set; }
     }
 }

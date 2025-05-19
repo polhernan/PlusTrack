@@ -30,17 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCamions));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dgvCamions = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbFiltre = new System.Windows.Forms.ComboBox();
+            this.tbFiltre = new System.Windows.Forms.TextBox();
+            this.bBuscar = new System.Windows.Forms.Button();
+            this.bCrear = new System.Windows.Forms.Button();
             this.bEnviaments = new System.Windows.Forms.Button();
             this.bEmpleats = new System.Windows.Forms.Button();
             this.bCamions = new System.Windows.Forms.Button();
             this.bRutes = new System.Windows.Forms.Button();
             this.bPaquets = new System.Windows.Forms.Button();
             this.bUbicacions = new System.Windows.Forms.Button();
-            this.dgvCamions = new System.Windows.Forms.DataGridView();
-            this.bBuscar = new System.Windows.Forms.Button();
-            this.tbFiltre = new System.Windows.Forms.TextBox();
-            this.cbFiltre = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCamions)).BeginInit();
             this.SuspendLayout();
@@ -61,6 +62,70 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(210, 521);
             this.flowLayoutPanel1.TabIndex = 53;
             this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // dgvCamions
+            // 
+            this.dgvCamions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCamions.Location = new System.Drawing.Point(234, 53);
+            this.dgvCamions.Name = "dgvCamions";
+            this.dgvCamions.Size = new System.Drawing.Size(677, 456);
+            this.dgvCamions.TabIndex = 58;
+            this.dgvCamions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCamions_CellContentClick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(231, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 54;
+            this.label1.Text = "Filtrar per:";
+            // 
+            // cbFiltre
+            // 
+            this.cbFiltre.FormattingEnabled = true;
+            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
+            this.cbFiltre.Name = "cbFiltre";
+            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
+            this.cbFiltre.TabIndex = 55;
+            // 
+            // tbFiltre
+            // 
+            this.tbFiltre.Location = new System.Drawing.Point(468, 16);
+            this.tbFiltre.Name = "tbFiltre";
+            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
+            this.tbFiltre.TabIndex = 56;
+            // 
+            // bBuscar
+            // 
+            this.bBuscar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bBuscar.ForeColor = System.Drawing.Color.White;
+            this.bBuscar.Location = new System.Drawing.Point(704, 8);
+            this.bBuscar.Name = "bBuscar";
+            this.bBuscar.Size = new System.Drawing.Size(95, 35);
+            this.bBuscar.TabIndex = 57;
+            this.bBuscar.Text = "Buscar";
+            this.bBuscar.UseVisualStyleBackColor = false;
+            this.bBuscar.Click += new System.EventHandler(this.bBuscar_Click);
+            // 
+            // bCrear
+            // 
+            this.bCrear.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bCrear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bCrear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCrear.ForeColor = System.Drawing.Color.White;
+            this.bCrear.Location = new System.Drawing.Point(816, 8);
+            this.bCrear.Name = "bCrear";
+            this.bCrear.Size = new System.Drawing.Size(95, 35);
+            this.bCrear.TabIndex = 59;
+            this.bCrear.Text = "Crear camió";
+            this.bCrear.UseVisualStyleBackColor = false;
             // 
             // bEnviaments
             // 
@@ -189,59 +254,12 @@
             this.bUbicacions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bUbicacions.UseVisualStyleBackColor = true;
             // 
-            // dgvCamions
-            // 
-            this.dgvCamions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCamions.Location = new System.Drawing.Point(234, 53);
-            this.dgvCamions.Name = "dgvCamions";
-            this.dgvCamions.Size = new System.Drawing.Size(677, 456);
-            this.dgvCamions.TabIndex = 58;
-            this.dgvCamions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCamions_CellContentClick);
-            // 
-            // bBuscar
-            // 
-            this.bBuscar.BackColor = System.Drawing.Color.RoyalBlue;
-            this.bBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.bBuscar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
-            this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bBuscar.ForeColor = System.Drawing.Color.White;
-            this.bBuscar.Location = new System.Drawing.Point(772, 7);
-            this.bBuscar.Name = "bBuscar";
-            this.bBuscar.Size = new System.Drawing.Size(95, 35);
-            this.bBuscar.TabIndex = 57;
-            this.bBuscar.Text = "Buscar";
-            this.bBuscar.UseVisualStyleBackColor = false;
-            // 
-            // tbFiltre
-            // 
-            this.tbFiltre.Location = new System.Drawing.Point(505, 15);
-            this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
-            this.tbFiltre.TabIndex = 56;
-            // 
-            // cbFiltre
-            // 
-            this.cbFiltre.FormattingEnabled = true;
-            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
-            this.cbFiltre.Name = "cbFiltre";
-            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
-            this.cbFiltre.TabIndex = 55;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(231, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 54;
-            this.label1.Text = "Filtrar per:";
-            // 
             // FormCamions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 521);
+            this.Controls.Add(this.bCrear);
             this.Controls.Add(this.dgvCamions);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.tbFiltre);
@@ -266,10 +284,11 @@
         public System.Windows.Forms.Button bRutes;
         public System.Windows.Forms.Button bPaquets;
         public System.Windows.Forms.Button bUbicacions;
-        public System.Windows.Forms.Button bBuscar;
-        public System.Windows.Forms.TextBox tbFiltre;
-        public System.Windows.Forms.ComboBox cbFiltre;
-        private System.Windows.Forms.Label label1;
         public System.Windows.Forms.DataGridView dgvCamions;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ComboBox cbFiltre;
+        public System.Windows.Forms.TextBox tbFiltre;
+        public System.Windows.Forms.Button bBuscar;
+        public System.Windows.Forms.Button bCrear;
     }
 }

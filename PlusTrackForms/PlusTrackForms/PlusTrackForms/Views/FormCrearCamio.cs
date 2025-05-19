@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace PlusTrackForms.Views
 {
-    public partial class CardviewEnviaments : UserControl
+    public partial class FormCrearCamio : Form
     {
-        public Button BtnAccion => bBuscar;
-        public CardviewEnviaments()
+        public FormCrearCamio()
         {
             InitializeComponent();
-        }
-
-        private void CardviewEnviaments_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

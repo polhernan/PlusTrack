@@ -29,36 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEmpleats));
-            this.tbFiltre = new System.Windows.Forms.TextBox();
-            this.cbFiltre = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.dgvEmpleats = new System.Windows.Forms.DataGridView();
             this.bEnviaments = new System.Windows.Forms.Button();
             this.bEmpleats = new System.Windows.Forms.Button();
             this.bCamions = new System.Windows.Forms.Button();
             this.bRutes = new System.Windows.Forms.Button();
             this.bPaquets = new System.Windows.Forms.Button();
             this.bUbicacions = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.bCrear = new System.Windows.Forms.Button();
             this.bBuscar = new System.Windows.Forms.Button();
-            this.dgvEmpleats = new System.Windows.Forms.DataGridView();
+            this.tbFiltre = new System.Windows.Forms.TextBox();
+            this.cbFiltre = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleats)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tbFiltre
-            // 
-            this.tbFiltre.Location = new System.Drawing.Point(505, 15);
-            this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
-            this.tbFiltre.TabIndex = 48;
-            // 
-            // cbFiltre
-            // 
-            this.cbFiltre.FormattingEnabled = true;
-            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
-            this.cbFiltre.Name = "cbFiltre";
-            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
-            this.cbFiltre.TabIndex = 47;
             // 
             // flowLayoutPanel1
             // 
@@ -76,6 +62,15 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(210, 521);
             this.flowLayoutPanel1.TabIndex = 44;
             this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // dgvEmpleats
+            // 
+            this.dgvEmpleats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleats.Location = new System.Drawing.Point(234, 53);
+            this.dgvEmpleats.Name = "dgvEmpleats";
+            this.dgvEmpleats.Size = new System.Drawing.Size(677, 456);
+            this.dgvEmpleats.TabIndex = 52;
+            this.dgvEmpleats.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleats_CellContentClick);
             // 
             // bEnviaments
             // 
@@ -205,14 +200,20 @@
             this.bUbicacions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bUbicacions.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // bCrear
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(231, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Filtrar per:";
+            this.bCrear.BackColor = System.Drawing.Color.RoyalBlue;
+            this.bCrear.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bCrear.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Blue;
+            this.bCrear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bCrear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bCrear.ForeColor = System.Drawing.Color.White;
+            this.bCrear.Location = new System.Drawing.Point(816, 8);
+            this.bCrear.Name = "bCrear";
+            this.bCrear.Size = new System.Drawing.Size(95, 35);
+            this.bCrear.TabIndex = 64;
+            this.bCrear.Text = "Crear empleat";
+            this.bCrear.UseVisualStyleBackColor = false;
             // 
             // bBuscar
             // 
@@ -222,32 +223,48 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.ForeColor = System.Drawing.Color.White;
-            this.bBuscar.Location = new System.Drawing.Point(772, 7);
+            this.bBuscar.Location = new System.Drawing.Point(704, 8);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(95, 35);
-            this.bBuscar.TabIndex = 51;
+            this.bBuscar.TabIndex = 63;
             this.bBuscar.Text = "Buscar";
             this.bBuscar.UseVisualStyleBackColor = false;
             // 
-            // dgvEmpleats
+            // tbFiltre
             // 
-            this.dgvEmpleats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmpleats.Location = new System.Drawing.Point(234, 53);
-            this.dgvEmpleats.Name = "dgvEmpleats";
-            this.dgvEmpleats.Size = new System.Drawing.Size(677, 456);
-            this.dgvEmpleats.TabIndex = 52;
-            this.dgvEmpleats.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleats_CellContentClick);
+            this.tbFiltre.Location = new System.Drawing.Point(468, 16);
+            this.tbFiltre.Name = "tbFiltre";
+            this.tbFiltre.Size = new System.Drawing.Size(223, 20);
+            this.tbFiltre.TabIndex = 62;
+            // 
+            // cbFiltre
+            // 
+            this.cbFiltre.FormattingEnabled = true;
+            this.cbFiltre.Location = new System.Drawing.Point(290, 15);
+            this.cbFiltre.Name = "cbFiltre";
+            this.cbFiltre.Size = new System.Drawing.Size(167, 21);
+            this.cbFiltre.TabIndex = 61;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(231, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "Filtrar per:";
             // 
             // FormEmpleats
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 521);
-            this.Controls.Add(this.dgvEmpleats);
+            this.Controls.Add(this.bCrear);
             this.Controls.Add(this.bBuscar);
             this.Controls.Add(this.tbFiltre);
             this.Controls.Add(this.cbFiltre);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvEmpleats);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormEmpleats";
@@ -260,9 +277,6 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.TextBox tbFiltre;
-        public System.Windows.Forms.ComboBox cbFiltre;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.Button bEnviaments;
         public System.Windows.Forms.Button bEmpleats;
@@ -270,8 +284,11 @@
         public System.Windows.Forms.Button bRutes;
         public System.Windows.Forms.Button bPaquets;
         public System.Windows.Forms.Button bUbicacions;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button bBuscar;
         public System.Windows.Forms.DataGridView dgvEmpleats;
+        public System.Windows.Forms.Button bCrear;
+        public System.Windows.Forms.Button bBuscar;
+        public System.Windows.Forms.TextBox tbFiltre;
+        public System.Windows.Forms.ComboBox cbFiltre;
+        private System.Windows.Forms.Label label1;
     }
 }

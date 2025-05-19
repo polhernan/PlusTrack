@@ -21,7 +21,7 @@ namespace PlusTrackForms.Controler
 
         FormsRepository formsRepository = new FormsRepository();
 
-        List<Route> enviaments = null;
+        List<Route> rutes = null;
 
         public EnviamentsController()
         {
@@ -39,6 +39,7 @@ namespace PlusTrackForms.Controler
             fEnviaments.bPaquets.Click += BPaquets_Click;
             fEnviaments.bUbicacions.Click += BUbicacions_Click;
             fEnviaments.bBuscar.Click += BBuscar_Click;
+
         }
 
         //private void BEnviaments_Click(object sender, EventArgs e)
@@ -89,26 +90,45 @@ namespace PlusTrackForms.Controler
         {
             switch (fEnviaments.cbFiltre.Text)
             {
+                case "ID Ruta":
+                    fEnviaments.dgvPackages.DataSource = rutes.Where(x => x.Id.Equals(filter)).ToList();                    
+                    break;
+
                 case "Repartidor":
-                    fEnviaments.lbRuta.DataSource = enviaments.Where(x => x.Employee.Email.Contains(filter)).ToList();
+                    fEnviaments.dgvPackages.DataSource = rutes.Where(x => x.Employee.Email.Contains(filter)).ToList();                    
                     break;
 
                 case "Camio":
-                    fEnviaments.lbRuta.DataSource = enviaments.Where(x => x.Truck.Plate.Contains(filter)).ToList();
+                    fEnviaments.dgvPackages.DataSource = rutes.Where(x => x.Truck.Plate.Contains(filter)).ToList();
                     break;
+            }
+        }
 
-                case "Ruta":
-                    fEnviaments.lbRuta.DataSource = enviaments.Where(x => x.Id.Equals(filter)).ToList();
-                    break;
+        public async void CreateRoutesCards(List<Route> rutes)
+        {
+            foreach (Route ruta in rutes)
+            {
+                var card = new CardviewEnviaments();
+                card.lId.Text = ruta.Id.ToString();
+                card.lRepartidor.Text = (ruta.Employee.Name + " " + ruta.Employee.Surnames);
+                card.lCamio.Text = ruta.Truck.Plate;
+                card.bBuscar.Click += async (sender, e) =>
+                {
+                    List<Package> packagesFromRoute = await formsRepository.getPackagesFromRoute(ruta.Id.ToString());
+                    fEnviaments.dgvPackages.DataSource = packagesFromRoute;
+                };
+                fEnviaments.flpComandes.Controls.Add(card);
             }
         }
 
         private async void LoadData()
         {
-            List<string> opcions = new List<string> { "ID Enviament", "Repartidor", "Camio", "Ruta" };
+            List<string> opcions = new List<string> { "ID Ruta", "Repartidor", "Camio" };
             fEnviaments.cbFiltre.DataSource = opcions;
-            enviaments = await formsRepository.GetRoutes(LoginController.companyId);
-            fEnviaments.lbRuta.DataSource = enviaments.ToList();
+            rutes = await formsRepository.GetRoutes(LoginController.companyId);
+            //fEnviaments.dgvPackages.DataSource = rutes.ToList();
+            fEnviaments.flpComandes.Controls.Clear();
+            CreateRoutesCards(rutes);
         }
     }
 }
