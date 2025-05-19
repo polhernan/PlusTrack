@@ -26,15 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_plustrack" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/foto_inici"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="205dp"-->
-<!--        android:src="@drawable/foto_inici"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/logo_plustrack"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"/>-->
-
     <FrameLayout
         android:id="@+id/frameBuscarId"
         android:layout_width="wrap_content"

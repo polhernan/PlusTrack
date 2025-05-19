@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // Carreguem LoginFragment amagant el bottomNavigationView
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentContainerView, LoginFragment())
@@ -47,19 +46,6 @@ class MainActivity : AppCompatActivity() {
 
             bottomNavigationView.visibility = View.GONE
         }
-
-        /*// Si el fragment es el de CrearCompteFragment o el de LoginFragment, tambe amagem el bottomNavigationView
-        // Tenim que tornar a posar el LoginFragment ja que si l'usuari tira enrrera amb el boto d'anar enrrera
-        // propi del movil, es veure el bottom menu
-        supportFragmentManager.addOnBackStackChangedListener {
-            val fragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView)
-
-            if (fragment is CrearCompteFragment || fragment is LoginFragment) {
-                bottomNavigationView.visibility = View.GONE
-            } else {
-                bottomNavigationView.visibility = View.VISIBLE
-            }
-        }*/
 
         findViewById<BottomNavigationView>(R.id.bottomNavigationView).setOnItemSelectedListener { item ->
 

@@ -28,18 +28,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.Locale
 
 class CrearCompteFragment : Fragment(R.layout.crear_compte_fragment) {
-    private lateinit var userApi: UsuariApi;
+    private val userApi = RetrofitUsuari.apiService
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val gson = GsonBuilder().setLenient().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:8085/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-        userApi = retrofit.create(UsuariApi::class.java)
-
         super.onCreate(savedInstanceState)
     }
 
@@ -111,9 +102,8 @@ class CrearCompteFragment : Fragment(R.layout.crear_compte_fragment) {
                                 Toast.makeText(requireContext(), "L'usuari amb email ${loginEmail.text.toString()} ja existeix", Toast.LENGTH_LONG).show()
                             }
                         }
-
                     } catch (e: Exception) {
-                        Log.e("Login", "Peticio erronea: ${e.message}", e)
+                        Log.e("Login", "Petició erronea: ${e.message}", e)
                         withContext(Dispatchers.Main) {
                             Toast.makeText(requireContext(), "Error de connexió", Toast.LENGTH_SHORT).show()
                         }

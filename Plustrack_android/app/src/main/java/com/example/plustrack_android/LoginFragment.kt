@@ -50,8 +50,8 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
         val btnEntrar: TextView = view.findViewById(R.id.btnEntrar)
         val txtCrearCompte: TextView = view.findViewById(R.id.txtCrearCompte)
 
-        loginUsuari.setText("bbb")
-        loginContrasenya.setText("bbb")
+        loginUsuari.setText("aaa")
+        loginContrasenya.setText("aaa")
 
         val text = getString(R.string.text_crear_compte)
         val spannableString = SpannableString(text)

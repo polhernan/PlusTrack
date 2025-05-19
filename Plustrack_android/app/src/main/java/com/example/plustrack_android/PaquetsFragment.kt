@@ -25,17 +25,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.getValue
 
 class PaquetsFragment : Fragment(R.layout.paquets_fragment) {
-    private lateinit var paquetApi: PaquetApi
+    private val paquetApi = RetrofitPaquet.apiService
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val gson = GsonBuilder().setLenient().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:8085/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-        paquetApi = retrofit.create(PaquetApi::class.java)
-
         super.onCreate(savedInstanceState)
     }
 

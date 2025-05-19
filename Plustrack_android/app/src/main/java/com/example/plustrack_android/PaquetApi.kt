@@ -26,6 +26,11 @@ interface PaquetApi {
         @Path("employeeId") Id: String
     ): Response<Int> // TOTAL PAQUETES DE ENTREGAR
 
+    @GET("/v1/packages/{packageId}")
+    suspend fun getPackageById(
+        @Path("packageId") Id: String
+    ): Response<Package>
+
     @PUT("/v1/packages/package-status/{packageId}/{packageStatus}")
     suspend fun postPackageState(
         @Path("packageId") Id: String,

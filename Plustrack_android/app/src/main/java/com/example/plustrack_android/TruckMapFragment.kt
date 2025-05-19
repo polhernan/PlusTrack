@@ -53,13 +53,13 @@ class TruckMapFragment : Fragment(R.layout.truck_map_fragment), OnMapReadyCallba
     override fun onCreate(savedInstanceState: Bundle?) {
         val gson = GsonBuilder().setLenient().create()
         val retrofitServer = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:8085/")
+            .baseUrl("http://172.16.24.175:8085/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         paquetApi = retrofitServer.create(PaquetApi::class.java)
 
         val retrofitOpenRoute = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:8080/")
+            .baseUrl("http://172.16.24.175:8080/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         paquetApiGetRuta = retrofitOpenRoute.create(PaquetApi::class.java)

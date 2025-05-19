@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_color">
+    android:background="#F0F0F0">
+
+    <View
+        android:id="@+id/cuadrat_blanc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/gradient_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/titol_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/titol_fragment"
@@ -16,19 +26,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-        <View
-            android:id="@+id/cuadradoBlanco"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:background="#F0F0F0"
-            app:layout_constraintTop_toBottomOf="@+id/titol_fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/imatge_avatar"
@@ -37,8 +35,8 @@
         android:layout_marginTop="36dp"
         android:layout_marginStart="26dp"
         android:src="@drawable/avatar"
-        app:layout_constraintTop_toTopOf="@+id/cuadradoBlanco"
-        app:layout_constraintStart_toStartOf="@+id/cuadradoBlanco"/>
+        app:layout_constraintTop_toBottomOf="@+id/cuadrat_blanc"
+        app:layout_constraintStart_toStartOf="@+id/cuadrat_blanc"/>
 
     <TextView
         android:id="@+id/nom_usuari"
@@ -59,43 +57,4 @@
         android:textSize="16dp"
         app:layout_constraintTop_toBottomOf="@+id/nom_usuari"
         app:layout_constraintStart_toStartOf="@+id/imatge_avatar"/>
-
-    <LinearLayout
-        android:id="@+id/llUsuari"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:background="@drawable/border_top_bottom_white"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direccio_usuari"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    <LinearLayout
-        android:id="@+id/cambiar_direccio"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:fontFamily="@font/jost_regular"
-        android:gravity="center"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/llUsuari"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Cambiar_direccion"
-            android:fontFamily="@font/jost_regular"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    </LinearLayout>
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
