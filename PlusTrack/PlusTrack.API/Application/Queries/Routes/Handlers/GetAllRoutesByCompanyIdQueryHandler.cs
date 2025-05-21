@@ -22,7 +22,7 @@ public class GetAllRoutesByCompanyIdQueryHandler : IRequestHandler<GetAllRoutesB
         List<Route> routes = _context.Routes
             .Include(x => x.Truck)
             .Include(x => x.Employee)
-            .Where(x => x.Dia.Date.Equals(DateTime.Now.Date)).ToList();
+            .Where(x => x.Dia.Date.Equals(DateTime.Now.Date) && x.Truck.CompanyId == request.CompanyId && x.Employee.CompanyId == request.CompanyId).ToList();
 
         return routes;
     }

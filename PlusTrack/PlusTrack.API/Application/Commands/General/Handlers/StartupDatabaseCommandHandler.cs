@@ -114,7 +114,7 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
                 Password = "aaa",
                 CompanyId = company2.Id
             });
-            var employee3 = await bus.Send(createEmployeeCommand);
+            var employee3 = await bus.Send(createEmployeeCommand3);
 
             var createEmployeeCommand4 = new CreateEmployeeCommand(new DTOs.Employee.EmployeeDto()
             {
