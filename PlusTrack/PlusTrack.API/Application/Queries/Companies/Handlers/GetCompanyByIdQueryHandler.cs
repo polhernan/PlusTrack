@@ -20,7 +20,11 @@ namespace PlusTrack.API.Application.Queries.Companies.Handlers
 
         public async Task<Company?> Handle(GetCompanyByIdQuery request, CancellationToken cancellationToken)
         {
-            var company = await _context.Companies.Include(x => x.License).Include(x => x.Trucks).FirstOrDefaultAsync(x => x.Id.Equals(request.CompanyId));
+            //! Gets the company and include license and all the trucks related
+            var company = await _context.Companies
+                .Include(x => x.License)
+                .Include(x => x.Trucks)
+                .FirstOrDefaultAsync(x => x.Id.Equals(request.CompanyId));
 
             return company;
         }

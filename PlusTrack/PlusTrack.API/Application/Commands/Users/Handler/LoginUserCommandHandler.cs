@@ -22,11 +22,14 @@ namespace PlusTrack.API.Application.Commands.Users.Handler
 
         public async Task<User> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
+            //! Get the user from the database
             User? user = await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email);
 
+            //! If user doesn't exist raise custom exception
             if (user == null)
                 throw new EntityNotFoundException($"The user with email {request.Email} was not found");
 
+            //! Verify the crypted password match
             if (!Crypter.Verify(request.Password, user.Password ?? ""))
                 throw new WrongPasswordException();
 

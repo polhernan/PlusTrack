@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlusTrack.API.Domain.AbstractRepositories;
 using Route = PlusTrack.API.Domain.Entities.Route;
-
 namespace PlusTrack.API.Application.Queries.Packages.Handlers;
 
 public class GetPackagesLeftAmountByEmployeeIdQueryHandler : IRequestHandler<GetPackagesLeftAmountByEmployeeIdQuery, int>
@@ -19,6 +18,7 @@ public class GetPackagesLeftAmountByEmployeeIdQueryHandler : IRequestHandler<Get
     
     public Task<int> Handle(GetPackagesLeftAmountByEmployeeIdQuery request, CancellationToken cancellationToken)
     {
+        //! Gets the route and include some other entities for future use
         Route route = _context.Employees
             .Include(x => x.Routes)
             .ThenInclude(x => x.RouteStops)
@@ -26,9 +26,11 @@ public class GetPackagesLeftAmountByEmployeeIdQueryHandler : IRequestHandler<Get
             .FirstOrDefault(x => x.Id.Equals(request.EmployeeId))
             .Routes.FirstOrDefault(x => x.Dia.Date.Equals(DateTime.Now.Date));
         
+        //! If route is null raise a custom exception
         if(route == null)
             throw new EntityNotFoundException($"Today route of the employee with id {request.EmployeeId} was not found");
 
+        //! Gets all stops left and return the count of it
         List<RouteStop> stopsLeft = route.RouteStops.Where(x => x.Package.Status == (int)PackageStatus.EnReparto).ToList();
 
         return Task.FromResult(stopsLeft.Count);

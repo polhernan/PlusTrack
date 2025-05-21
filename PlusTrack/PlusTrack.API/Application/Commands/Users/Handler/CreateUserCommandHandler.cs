@@ -22,11 +22,14 @@ namespace PlusTrack.API.Application.Commands.Users.Handler
 
         public async Task<User> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+            //! Verify if the email is alredy on another user
             bool emailExist = (await _context.Users.FirstOrDefaultAsync(x => x.Email == request.Email)) != null;
             
+            //! If email exist raise a custom exception
             if (emailExist)
                 throw new UserEmailAlredyExist();
 
+            //! Create user entity
             var user = new User()
             {
                 Id = Guid.NewGuid(),
@@ -37,6 +40,7 @@ namespace PlusTrack.API.Application.Commands.Users.Handler
                 BirthDate = request.BirthDate
             };
 
+            //! Adds user entity to the database and save changes
             _context.Users.Add(user);
 
             await _context.SaveChangesAsync();

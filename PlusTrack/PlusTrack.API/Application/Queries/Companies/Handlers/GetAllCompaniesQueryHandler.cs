@@ -1,7 +1,4 @@
-﻿using MediatR;
-using PlusTrack.API.Application.Queries.Companies;
-using PlusTrack.API.Domain.AbstractRepositories;
-using PlusTrack.API.Domain.Entities;
+﻿using PlusTrack.API.Domain.AbstractRepositories;
 
 namespace PlusTrack.API.Application.Queries.Companies.Handlers
 {
@@ -20,8 +17,7 @@ namespace PlusTrack.API.Application.Queries.Companies.Handlers
 
         public async Task<IEnumerable<Company>> Handle(GetAllCompaniesQuery request, CancellationToken cancellationToken)
         {
-            await Task.Delay(1);
-
+            //! Return the list of companies
             return _context.Companies.ToList();
         }
     }

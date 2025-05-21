@@ -24,6 +24,7 @@ public class GetNextPackageByEmployeeIdQueryHandler : IRequestHandler<GetNextPac
     
     public async Task<PackageAppDto> Handle(GetNextPackageByEmployeeIdQuery request, CancellationToken cancellationToken)
     {
+        //! Gets the employee by it's id and inclue many related entities
         var employee = _context.Employees
             .Include(x => x.Routes)
                 .ThenInclude(x => x.RouteStops)
@@ -34,23 +35,28 @@ public class GetNextPackageByEmployeeIdQueryHandler : IRequestHandler<GetNextPac
                 .ThenInclude(x => x.Location)
             .FirstOrDefault(e => e.Id == request.EmployeeId);
         
+        //! If employee is null raise a custom exception
         if (employee == null)
             throw new EntityNotFoundException($"Employee with id {request.EmployeeId} does not exist");
         
+        //! Gets the route from the employee and verify if is not null
         Route route = employee.Routes.FirstOrDefault(x => x.Dia.Date.Equals(DateTime.Now.Date));
         
         if(route == null)
             throw new EntityNotFoundException($"Today route for the employee with id {request.EmployeeId} does not exist");
         
+        //! Gte the next package from the route
         Package package = route.RouteStops
                 .Where(x => x.Package.Status == (int)PackageStatus.EnReparto)
                 .OrderBy(x => x.StopOrder)
                 .FirstOrDefault()
                 .Package;
         
+        //! If package is null raise a custom exception
         if(package == null)
             throw new EntityNotFoundException($"Today package for the employee with id {request.EmployeeId} does not exist");
         
+        //! Return the dto of the package
         return new PackageAppDto()
         {
             Id = package.Id,

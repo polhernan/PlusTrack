@@ -1,6 +1,8 @@
+using PlusTrack.API.Application.DTOs.Packages;
+
 namespace PlusTrack.API.Application.Queries.Packages;
 
-public class GetPackageByIdQuery : IRequest<Package>
+public class GetPackageByIdQuery : IRequest<PackageAppDto>
 {
     
     

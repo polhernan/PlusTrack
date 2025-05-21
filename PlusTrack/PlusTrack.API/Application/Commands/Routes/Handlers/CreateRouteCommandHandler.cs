@@ -18,12 +18,14 @@ namespace PlusTrack.API.Application.Commands.Routes.Handlers
 
         public async Task<Domain.Entities.Route> Handle(CreateRouteCommand request, CancellationToken cancellationToken)
         {
+            //! Create the route entity
             Domain.Entities.Route route = new Domain.Entities.Route()
             {
                 Id = Guid.NewGuid(),
                 Dia = request.DayOfRoute
             };
 
+            //! Adds the entity to the database and save changes
             _context.Routes.Add(route);
 
             await _context.SaveChangesAsync();

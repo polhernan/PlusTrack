@@ -17,6 +17,7 @@ public class CreatePackageCommandHandler : IRequestHandler<CreatePackageCommand,
     
     public async Task<Package> Handle(CreatePackageCommand request, CancellationToken cancellationToken)
     {
+        //! Creates the location of the routeStop
         Location newLocation = new Location()
         {
             Id = Guid.NewGuid(),
@@ -24,6 +25,7 @@ public class CreatePackageCommandHandler : IRequestHandler<CreatePackageCommand,
             Latitude = request.Request.Location.Latitude
         };
         
+        //! Creates the route stop of the package
         RouteStop newRouteStop = new RouteStop()
         {
             Id = Guid.NewGuid(),
@@ -31,7 +33,7 @@ public class CreatePackageCommandHandler : IRequestHandler<CreatePackageCommand,
             LocationId = newLocation.Id,
         };
 
-
+        //! Creates the package itself
         Package newPackage = new Package()
         {
             Id = Guid.NewGuid(),
@@ -41,8 +43,10 @@ public class CreatePackageCommandHandler : IRequestHandler<CreatePackageCommand,
             CompanyId = request.Request.CompanyId,
         };
         
+        //! Relate the routestop with the package
         newRouteStop.PackageId = newPackage.Id;
         
+        //! Save all 3 entities in the database and save changes
         _context.Locations.Add(newLocation);
         _context.RouteStops.Add(newRouteStop);
         _context.Packages.Add(newPackage);

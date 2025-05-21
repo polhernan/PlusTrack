@@ -25,6 +25,10 @@
           <option name="color" value="#98C379" />
           <option name="type" value="*" />
         </CustomTag>
+        <CustomTag>
+          <option name="color" value="#00FFFF" />
+          <option name="type" value="-" />
+        </CustomTag>
       </list>
     </option>
   </component>

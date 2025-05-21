@@ -17,12 +17,15 @@ namespace PlusTrack.API.Application.Commands.Companies.Handlers
 
         public async Task<Company> Handle(CreateCompanyCommand request, CancellationToken cancellationToken)
         {
+            //! Creates a new company entity
             Company newCompany = new Company(request.CompanyDto);
 
+            //! Adds the employee to the database and saves changes
             _context.Add(newCompany);
 
             await _context.SaveChangesAsync();
 
+            //! Returns company entity
             return newCompany;
         }
     }

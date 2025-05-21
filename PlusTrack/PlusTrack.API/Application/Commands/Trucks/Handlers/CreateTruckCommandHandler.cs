@@ -25,13 +25,17 @@ namespace PlusTrack.API.Application.Commands.Trucks.Handlers
 
         public async Task<TruckDto> Handle(CreateTruckCommand request, CancellationToken cancellationToken)
         {
+            //! Verify if the license have space
             bool licenseHaveSpace = await verifyLicenseSpace(request.TruckDto.CompanyId ?? Guid.Empty);
 
+            //! If license have no space left, raise custom exception 
             if (!licenseHaveSpace)
                 throw new LicenseAtMaxException($"The license of comany {request.TruckDto.CompanyId}, can't handle more trucks");
 
+            //! Create the new truck entity
             Truck newTruck = new Truck(request.TruckDto);
 
+            //! Adds the entity to the database and save changes
             _context.Trucks.Add(newTruck);
 
             await _context.SaveChangesAsync();
@@ -42,14 +46,18 @@ namespace PlusTrack.API.Application.Commands.Trucks.Handlers
 
         private async Task<bool> verifyLicenseSpace(Guid companyId)
         {
+            //! Verify company id is not an empty guid
             companyId.Requires().IsNotEqualTo(Guid.Empty);
 
+            //! Get all trucks by company id
             var getAllTrucksByCompanyIdQuery = new GetAllTrucksByCompanyIdQuery(companyId);
             int trucksAmount = (await bus.Send(getAllTrucksByCompanyIdQuery)).Count();
 
+            //! Get the license by company id
             var getLicenseByCompanyIdQuery = new GetLicenseByCompanyIdQuery(companyId);
             int trucksAllowedAmount = (await bus.Send(getLicenseByCompanyIdQuery)).TruckAmount;
 
+            //! Verify is room enough for another truck
             return trucksAllowedAmount > trucksAmount;
         }
     }

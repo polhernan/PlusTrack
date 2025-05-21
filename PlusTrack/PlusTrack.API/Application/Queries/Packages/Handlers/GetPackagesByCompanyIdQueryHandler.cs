@@ -18,6 +18,7 @@ public class GetPackagesByCompanyIdQueryHandler : IRequestHandler<GetPackagesByC
     
     public Task<List<Package>> Handle(GetPackagesByCompanyIdQuery request, CancellationToken cancellationToken)
     {
+        //! Gets all the packages by the specified company
         var packages = _context.Packages
             .Include(x => x.User)
             .Include(x => x.RouteStop)

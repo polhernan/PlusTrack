@@ -35,10 +35,10 @@ namespace PlusTrack.API.WebApi.Controllers
         }
 
         [HttpGet("v1/packages/{packageId:guid}")]
-        public async Task<ActionResult<Package>> GetPackageById(Guid packageId)
+        public async Task<ActionResult<PackageAppDto>> GetPackageById(Guid packageId)
         {
             var getPackageByIdQuery = new GetPackageByIdQuery(packageId);
-            Package result = await bus.Send(getPackageByIdQuery);
+            PackageAppDto result = await bus.Send(getPackageByIdQuery);
 
             return Ok(result);
         }

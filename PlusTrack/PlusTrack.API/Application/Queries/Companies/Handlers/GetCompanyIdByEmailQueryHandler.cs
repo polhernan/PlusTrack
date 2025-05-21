@@ -17,8 +17,10 @@ public class GetCompanyIdByEmailQueryHandler : IRequestHandler<GetCompanyIdByEma
     
     public Task<Guid> Handle(GetCompanyIdByEmailQuery request, CancellationToken cancellationToken)
     {
+        //! Gets the company by it's email
         Company? company = _context.Companies.FirstOrDefault(x => x.Email == request.CompanyEmail);
         
+        //! If company doesn't exist, raise a custom exception
         if(company == null)
             throw new EntityNotFoundException($"Company with email {request.CompanyEmail} not found");
         
