@@ -403,3 +403,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 **/cataluna-latest.osm.pbf
+**/bin
