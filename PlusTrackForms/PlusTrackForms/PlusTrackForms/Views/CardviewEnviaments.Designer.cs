@@ -35,10 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lCamio = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.lRuta = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lTotal = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bBuscar
@@ -49,7 +45,7 @@
             this.bBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bBuscar.ForeColor = System.Drawing.Color.White;
-            this.bBuscar.Location = new System.Drawing.Point(197, 120);
+            this.bBuscar.Location = new System.Drawing.Point(6, 101);
             this.bBuscar.Name = "bBuscar";
             this.bBuscar.Size = new System.Drawing.Size(95, 35);
             this.bBuscar.TabIndex = 39;
@@ -61,10 +57,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 40;
-            this.label1.Text = "ID enviament:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Text = "ID ruta:";
+            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lId
             // 
@@ -111,50 +107,10 @@
             this.label5.TabIndex = 44;
             this.label5.Text = "Camio:";
             // 
-            // lRuta
-            // 
-            this.lRuta.AutoSize = true;
-            this.lRuta.Location = new System.Drawing.Point(82, 100);
-            this.lRuta.Name = "lRuta";
-            this.lRuta.Size = new System.Drawing.Size(33, 13);
-            this.lRuta.TabIndex = 47;
-            this.lRuta.Text = "AA00";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 100);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 13);
-            this.label7.TabIndex = 46;
-            this.label7.Text = "Ruta:";
-            // 
-            // lTotal
-            // 
-            this.lTotal.AutoSize = true;
-            this.lTotal.Location = new System.Drawing.Point(82, 131);
-            this.lTotal.Name = "lTotal";
-            this.lTotal.Size = new System.Drawing.Size(25, 13);
-            this.lTotal.TabIndex = 49;
-            this.lTotal.Text = "000";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 142);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(75, 13);
-            this.label9.TabIndex = 48;
-            this.label9.Text = "Total paquets:";
-            // 
             // CardviewEnviaments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.lTotal);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.lRuta);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.lCamio);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lRepartidor);
@@ -164,6 +120,7 @@
             this.Controls.Add(this.bBuscar);
             this.Name = "CardviewEnviaments";
             this.Size = new System.Drawing.Size(309, 169);
+            this.Load += new System.EventHandler(this.CardviewEnviaments_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,9 +135,5 @@
         protected System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label lCamio;
         protected System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label lRuta;
-        protected System.Windows.Forms.Label label7;
-        public System.Windows.Forms.Label lTotal;
-        protected System.Windows.Forms.Label label9;
     }
 }

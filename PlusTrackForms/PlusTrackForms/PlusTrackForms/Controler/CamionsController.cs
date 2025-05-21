@@ -35,6 +35,7 @@ namespace PlusTrackForms.Controler
             fCamions.bPaquets.Click += BPaquets_Click;
             fCamions.bUbicacions.Click += BUbicacions_Click;
             fCamions.bBuscar.Click += BBuscar_Click;
+            fCamions.bCrear.Click += BCrear_Click;
         }
 
         private void BEnviaments_Click(object sender, EventArgs e)
@@ -94,6 +95,12 @@ namespace PlusTrackForms.Controler
                     fCamions.dgvCamions.DataSource = trucks.Where(x => x.Plate.Contains(filter)).ToList();
                     break;
             }
+        }
+
+        private void BCrear_Click(object sender, EventArgs e)
+        {
+            new CrearCamioController();
+            fCamions.Close();
         }
 
         private async void LoadData()

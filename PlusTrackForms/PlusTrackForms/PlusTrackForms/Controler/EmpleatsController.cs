@@ -35,6 +35,7 @@ namespace PlusTrackForms.Controler
             fEmpleats.bPaquets.Click += BPaquets_Click;
             fEmpleats.bUbicacions.Click += BUbicacions_Click;
             fEmpleats.bBuscar.Click += BBuscar_Click;
+            fEmpleats.bCrear.Click += BCrear_Click;
         }
 
         private void BEnviaments_Click(object sender, EventArgs e)
@@ -107,6 +108,11 @@ namespace PlusTrackForms.Controler
             }
         }
 
+        private void BCrear_Click(object sender, EventArgs e)
+        {
+            new CrearEmpleatController();
+            fEmpleats.Close();
+        }
         private async void LoadData()
         {
             List<string> opcions = new List<string> { "ID empleat", "Nom", "Cognom", "DNI", "Email" };

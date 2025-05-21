@@ -21,5 +21,10 @@ namespace PlusTrackForms.Views
         {
 
         }
+
+        private void bBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

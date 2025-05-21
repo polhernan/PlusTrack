@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 
 object RetrofitOpenRoute {
-    private const val BASE_URL = "http://172.16.24.23:8080/"
+    private const val BASE_URL = "http://172.16.24.175:8080/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY

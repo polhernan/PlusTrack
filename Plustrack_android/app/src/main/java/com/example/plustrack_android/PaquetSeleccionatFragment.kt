@@ -1,12 +1,14 @@
 package com.example.plustrack_android
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -15,21 +17,9 @@ import java.time.format.DateTimeFormatter
 
 class PaquetSeleccionatFragment : Fragment(R.layout.paquet_seleccionat_fragment) {
     private var paquet: Package? = null
-    private lateinit var paquetApi: PaquetApi;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val gson = GsonBuilder()
-            .setLenient()
-            .create()
-
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://172.16.24.23:8085/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-
-        paquetApi = retrofit.create(PaquetApi::class.java)
         paquet = arguments?.getSerializable("paquet") as? Package
     }
 
@@ -38,6 +28,11 @@ class PaquetSeleccionatFragment : Fragment(R.layout.paquet_seleccionat_fragment)
 
         // ATENCIO MAMONS: tindriem que fer crides amb aquest paquet a la DB per saber
         // per on esta i aixi canviar les icones (tick o creu) per saber el seu estat
+
+        Log.d(
+            "paquet info",
+            "Paquet Id = ${paquet?.Id}, Paquet Recollida = ${paquet?.DataEntrega}, Paquet Receptor = ${paquet?.Receptor}"
+        )
 
         var id_paquet : TextView = view.findViewById(R.id.id_paquet_seleccionat)
         var recollida : TextView = view.findViewById(R.id.recollida)

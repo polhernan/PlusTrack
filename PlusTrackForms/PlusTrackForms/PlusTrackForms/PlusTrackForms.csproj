@@ -76,6 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controler\CamionsController.cs" />
+    <Compile Include="Controler\CrearCamioController.cs" />
+    <Compile Include="Controler\CrearEmpleatController.cs" />
     <Compile Include="Controler\EmpleatsController.cs" />
     <Compile Include="Controler\EnviamentsController.cs" />
     <Compile Include="Controler\LoginController.cs" />
@@ -119,6 +121,18 @@
     </Compile>
     <Compile Include="Views\FormCamions.Designer.cs">
       <DependentUpon>FormCamions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCrearCamio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCrearCamio.Designer.cs">
+      <DependentUpon>FormCrearCamio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormCrearEmpleat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\FormCrearEmpleat.Designer.cs">
+      <DependentUpon>FormCrearEmpleat.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\FormEmpleats.cs">
       <SubType>Form</SubType>
@@ -169,6 +183,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormCamions.resx">
       <DependentUpon>FormCamions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCrearCamio.resx">
+      <DependentUpon>FormCrearCamio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\FormCrearEmpleat.resx">
+      <DependentUpon>FormCrearEmpleat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\FormEmpleats.resx">
       <DependentUpon>FormEmpleats.cs</DependentUpon>

@@ -46,12 +46,12 @@ namespace PlusTrackForms.Model
             return employees;
         }
 
-        public async Task<List<Enviament>> GetEnviaments()
+        /*public async Task<List<Enviament>> GetEnviaments()
         {
             List<Enviament> enviaments = await HttpRequestHelper<bool, List<Enviament>>.GetAsync(ip + "/v1/route/create-route-assign-all/");
 
             return enviaments;
-        }
+        }*/
 
         public async Task<List<Route>> GetRoutes(string companyId)
         {
@@ -93,6 +93,27 @@ namespace PlusTrackForms.Model
             List<Locator> locator = await HttpRequestHelper<bool, List<Locator>>.GetAsync(ip + $"/v1/locations/by-company/{companyId}");
 
             return locator;
+        }
+
+        public async Task<List<Package>> getPackagesFromRoute(string routeId)
+        {
+            List<Package> packages = await HttpRequestHelper<bool, List<Package>>.GetAsync(ip + $"/v1/packages/by-route/{routeId}");
+
+            return packages;
+        }
+
+        internal async Task<Truck> PostTruck(Truck newTruck)
+        {
+            Truck responseTruck = await HttpRequestHelper<Truck, Truck>.PostAsJsonAsync(ip + $"/v1/trucks", newTruck);
+
+            return responseTruck;
+        }
+
+        internal async Task<Employee> PostEmployee(Employee newEmployee)
+        {
+            Employee responseEmployee = await HttpRequestHelper<Employee, Employee>.PostAsJsonAsync(ip + $"/v1/employees", newEmployee);
+
+            return responseEmployee;
         }
     }
 }

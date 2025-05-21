@@ -41,8 +41,9 @@
             this.bPaquets = new System.Windows.Forms.Button();
             this.bUbicacions = new System.Windows.Forms.Button();
             this.flpComandes = new System.Windows.Forms.FlowLayoutPanel();
-            this.lbRuta = new System.Windows.Forms.ListBox();
+            this.dgvPackages = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPackages)).BeginInit();
             this.SuspendLayout();
             // 
             // tbFiltre
@@ -236,20 +237,20 @@
             this.flpComandes.Size = new System.Drawing.Size(310, 378);
             this.flpComandes.TabIndex = 42;
             // 
-            // lbRuta
+            // dgvPackages
             // 
-            this.lbRuta.FormattingEnabled = true;
-            this.lbRuta.Location = new System.Drawing.Point(584, 60);
-            this.lbRuta.Name = "lbRuta";
-            this.lbRuta.Size = new System.Drawing.Size(327, 446);
-            this.lbRuta.TabIndex = 43;
+            this.dgvPackages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPackages.Location = new System.Drawing.Point(587, 60);
+            this.dgvPackages.Name = "dgvPackages";
+            this.dgvPackages.Size = new System.Drawing.Size(324, 446);
+            this.dgvPackages.TabIndex = 44;
             // 
             // FormEnviaments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 521);
-            this.Controls.Add(this.lbRuta);
+            this.Controls.Add(this.dgvPackages);
             this.Controls.Add(this.flpComandes);
             this.Controls.Add(this.tbFiltre);
             this.Controls.Add(this.cbFiltre);
@@ -260,6 +261,7 @@
             this.Name = "FormEnviaments";
             this.Text = "FormEnviament";
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPackages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -279,6 +281,6 @@
         public System.Windows.Forms.Button bPaquets;
         public System.Windows.Forms.Button bUbicacions;
         public System.Windows.Forms.FlowLayoutPanel flpComandes;
-        public System.Windows.Forms.ListBox lbRuta;
+        public System.Windows.Forms.DataGridView dgvPackages;
     }
 }
