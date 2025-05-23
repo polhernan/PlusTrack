@@ -12,11 +12,13 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
     
     
     private readonly PlusTrackDbContext _context;
+    private readonly IConfiguration _configuration;
 
 
-    public GetPackagesByUserIdQueryHandler(PlusTrackDbContext context)
+    public GetPackagesByUserIdQueryHandler(PlusTrackDbContext context, IConfiguration configuration)
     {
         _context = context;
+        _configuration = configuration;
     }
     
     
@@ -41,11 +43,11 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
         {
             
             //! For each package of the user, we get the packages will be delivered before and have not been delivered yet
-            List<Package> beforePackage = _context.RouteStops.Include(y => y.Package)
+            List<RouteStop> beforePackage = _context.RouteStops
+                .Include(y => y.Package)
                 .Include(y => y.Location)
                 .Where(y => y.RouteId.Equals(x.RouteStop.RouteId) && y.StopOrder <= x.RouteStop.StopOrder && y.Package.Status == (int)PackageStatus.EnReparto)
                 .OrderBy(y => y.StopOrder)
-                .Select(y => y.Package)
                 .ToList();
 
             //! If there are not packages before this one, continue to the next package
@@ -103,14 +105,14 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
             
             coordinates.AddRange(beforePackage.Select(y => new List<double>()
             {
-                y.RouteStop.Location.Longitude,
-                y.RouteStop.Location.Latitude
+                y.Location.Longitude,
+                y.Location.Latitude
             }));
 
             var body = new
             {
                 coordinates = beforePackage.Select(y => new double[]
-                    { y.RouteStop.Location.Longitude, y.RouteStop.Location.Latitude})
+                    { y.Location.Longitude, y.Location.Latitude})
             };
 
             //! Serialize the request
@@ -118,7 +120,7 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
             var content = new StringContent(json, Encoding.UTF8, "application/json");
             
             //! Send the request to the ORS service
-            var response = await httpClient.PostAsync("http://localhost:8080/ors/v2/directions/driving-car", content);
+            var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8080/ors/v2/directions/driving-car", content);
 
             //! If the response is not successfull, we continue to the next package
             if (!response.IsSuccessStatusCode)

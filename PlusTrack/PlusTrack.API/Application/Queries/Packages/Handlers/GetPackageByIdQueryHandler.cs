@@ -10,11 +10,13 @@ namespace PlusTrack.API.Application.Queries.Packages.Handlers;
 public class GetPackageByIdQueryHandler : IRequestHandler<GetPackageByIdQuery, PackageAppDto>
 {
     private readonly PlusTrackDbContext _context;
+    private readonly IConfiguration _configuration;
 
 
-    public GetPackageByIdQueryHandler(PlusTrackDbContext context)
+    public GetPackageByIdQueryHandler(PlusTrackDbContext context, IConfiguration configuration)
     {
         _context = context;
+        _configuration = configuration;
     }
 
 
@@ -118,7 +120,7 @@ public class GetPackageByIdQueryHandler : IRequestHandler<GetPackageByIdQuery, P
 
         string json = JsonSerializer.Serialize(body);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await httpClient.PostAsync("http://localhost:8080/ors/v2/directions/driving-car", content);
+        var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8080/ors/v2/directions/driving-car", content);
 
         //! If ors response is not succesfull raise an exception
         if (!response.IsSuccessStatusCode)

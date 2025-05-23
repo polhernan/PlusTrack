@@ -23,6 +23,7 @@ public class GetPackagesByRouteIdQueryHandler : IRequestHandler<GetPackagesByRou
         Route route = _context.Routes
             .Include(x => x.RouteStops)
             .ThenInclude(x => x.Package)
+            .ThenInclude(x => x.User)
             .Include(x => x.RouteStops)
             .FirstOrDefault(x => x.Id == request.RouteId);
         

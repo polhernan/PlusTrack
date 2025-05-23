@@ -1,6 +1,4 @@
 ﻿using Conditions;
-using MediatR;
-using PlusTrack.API.Domain.Entities;
 
 namespace PlusTrack.API.Application.Queries.Companies
 {

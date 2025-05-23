@@ -45,9 +45,9 @@ namespace PlusTrack.API.WebApi.Controllers
         
         
         [HttpPost("v1/route/assign-route-stops")]
-        public async Task<ActionResult<List<RouteStop>>> AssignRouteStops(Guid routeId, int? routeStops)
+        public async Task<ActionResult<List<RouteStop>>> AssignRouteStops(Guid routeId, Guid companyId, int? routeStops)
         {
-            var assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(routeId, routeStops);
+            var assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(routeId, companyId, routeStops);
 
             var result = await bus.Send(assignRouteStopsToRouteCommand);
 
@@ -73,7 +73,7 @@ namespace PlusTrack.API.WebApi.Controllers
             if(route == null)
                 throw new Exception("Error creating route");
             
-            var routeStops = (await AssignRouteStops(route.Id,request.AmountStops)).Value;
+            var routeStops = (await AssignRouteStops(route.Id, request.CompanyId, request.AmountStops)).Value;
             
             var assignEmployeeTruckToRoute = new AssignEmployeeTruckToRouteCommand(request.EmployeeId,request.TruckId,route.Id);
             await bus.Send(assignEmployeeTruckToRoute);

@@ -16,7 +16,7 @@ builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContain
 
 builder.Services.AddDbContext<PlusTrackDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionStrings:DefaultConnection").Replace("{ip}", builder.Configuration.GetValue<string>("DockerIps:SqlServer")));
     options.EnableSensitiveDataLogging();
 });
 

@@ -5,10 +5,6 @@ using PlusTrack.API.Application.Commands.Packages;
 using PlusTrack.API.Application.DTOs.Packages;
 using PlusTrack.API.Application.Queries.Packages;
 
-// using PlusTrack.API.Application.Commands.Packages;
-// using PlusTrack.API.Application.DTOs.Packages;
-// using PlusTrack.API.Application.Queries.Packages;
-
 namespace PlusTrack.API.WebApi.Controllers
 {
     [ApiController]

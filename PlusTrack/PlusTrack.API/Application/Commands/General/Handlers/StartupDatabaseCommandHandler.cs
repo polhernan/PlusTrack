@@ -26,7 +26,6 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
 
         public async Task Handle(StartupDatabaseCommand request, CancellationToken cancellationToken)
         {
-#if DEBUG
             _context.Database.EnsureDeleted();
             await _context.SaveChangesAsync();
 
@@ -34,7 +33,6 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
             await _context.SaveChangesAsync();
 
             await AddEntities();
-#endif
         }
 
         public async Task AddEntities()
@@ -110,9 +108,9 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
                 Surnames = "Aniceto",
                 Dni = "45612378O",
                 BirthDate = DateTime.Now,
-                Email = "worker1@correos.com",
+                Email = "worker3@seur.com",
                 Password = "aaa",
-                CompanyId = company2.Id
+                CompanyId = company.Id
             });
             var employee3 = await bus.Send(createEmployeeCommand3);
 
@@ -222,7 +220,7 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
                 LastItv = DateTime.Now,
                 NextItv = DateTime.Now.AddDays(365),
                 Capacity = 2500,
-                CompanyId = company2.Id
+                CompanyId = company.Id
             });
             var truck3 = await bus.Send(createTruckCommand);
 
@@ -472,19 +470,19 @@ namespace PlusTrack.API.Application.Commands.General.Handlers
 
             //// Route Stops
 
-            var assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route.Id, 3);
+            var assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route.Id, company.Id, 3);
             var routeStops = await bus.Send(assignRouteStopsToRouteCommand);
 
             var orderRouteStopsCommand = new OrderRouteStopsCommand(route.Id);
             await bus.Send(orderRouteStopsCommand);
 
-            assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route2.Id, 5);
+            assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route2.Id, company.Id,5);
             var routeStops2 = await bus.Send(assignRouteStopsToRouteCommand);
 
             orderRouteStopsCommand = new OrderRouteStopsCommand(route2.Id);
             await bus.Send(orderRouteStopsCommand);
 
-            assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route3.Id, 2);
+            assignRouteStopsToRouteCommand = new AssignRouteStopsToRouteCommand(route3.Id, company.Id,2);
             var routeStops3 = await bus.Send(assignRouteStopsToRouteCommand);
 
             orderRouteStopsCommand = new OrderRouteStopsCommand(route3.Id);

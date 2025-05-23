@@ -5,12 +5,14 @@
 
 
         public Guid RouteId { get; }
+        public Guid CompanyId { get; }
         public int? AmountOfRouteStops { get; }
         
         
-        public AssignRouteStopsToRouteCommand(Guid routeId, int? amountOfRouteStops)
+        public AssignRouteStopsToRouteCommand(Guid routeId, Guid companyId, int? amountOfRouteStops)
         {
             RouteId = routeId;
+            CompanyId = companyId;
             AmountOfRouteStops = amountOfRouteStops;
         }
     }

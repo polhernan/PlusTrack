@@ -13,11 +13,13 @@ namespace PlusTrack.API.Application.Commands.RouteStops.Handlers
 
 
         private readonly PlusTrackDbContext _context;
+        private readonly IConfiguration _configuration;
 
 
-        public OrderRouteStopsCommandHandler(PlusTrackDbContext context)
+        public OrderRouteStopsCommandHandler(PlusTrackDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
 
@@ -65,7 +67,7 @@ namespace PlusTrack.API.Application.Commands.RouteStops.Handlers
             using HttpClient httpClient = new HttpClient();
 
             //! Gets the response and read it as a string
-            var response = await (await httpClient.PostAsJsonAsync("http://127.0.0.1:3000/", root))
+            var response = await (await httpClient.PostAsJsonAsync($"http://{_configuration.GetValue<string>("DockerIps:Vroom")}:3000/", root))
                 .Content.ReadAsByteArrayAsync();
 
             //! Parse the string response to the object to access the desired data
