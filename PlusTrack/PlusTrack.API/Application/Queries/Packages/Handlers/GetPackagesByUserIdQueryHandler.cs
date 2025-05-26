@@ -39,14 +39,39 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
         List<PackageAppDto> result = new List<PackageAppDto>();
 
         //! Iterate over each package of the user
-        foreach (var x in packages)
+        foreach (var package in packages)
         {
+
+            if (package.RouteStop.RouteId == null || package.Status != (int)PackageStatus.EnReparto)
+            {
+                string text = "On the office. Waiting for a driver!";
+                if (package.Status == (int)PackageStatus.Entregado)
+                {
+                    text = "The package is been delivered.";
+                }else if (package.Status == (int)PackageStatus.Entregado)
+                {
+                    text = "The package couldn't been delivered.";
+                }
+                result.Add(new PackageAppDto()
+                {
+                    Id = package.Id,
+                    Location = new LocationsDto()
+                    {
+                        Latitude = package.RouteStop.Location.Latitude,
+                        Longitude = package.RouteStop.Location.Longitude,
+                    },
+                    Status = package.Status,
+                    Receptor = package.User.Name + " " + package.User.Surnames,
+                    TimeToDeliver = text
+                });
+                continue;
+            }
             
             //! For each package of the user, we get the packages will be delivered before and have not been delivered yet
             List<RouteStop> beforePackage = _context.RouteStops
                 .Include(y => y.Package)
                 .Include(y => y.Location)
-                .Where(y => y.RouteId.Equals(x.RouteStop.RouteId) && y.StopOrder <= x.RouteStop.StopOrder && y.Package.Status == (int)PackageStatus.EnReparto)
+                .Where(y => y.RouteId.Equals(package.RouteStop.RouteId) && y.StopOrder <= package.RouteStop.StopOrder && y.Package.Status == (int)PackageStatus.EnReparto)
                 .OrderBy(y => y.StopOrder)
                 .ToList();
 
@@ -58,7 +83,7 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
             var route = _context.Routes.Include(y => y.Truck)
                 .ThenInclude(y => y.Tracks)
                 .ThenInclude(y => y.Location)
-                .FirstOrDefault(y => y.Id == x.RouteStop.RouteId);
+                .FirstOrDefault(y => y.Id == package.RouteStop.RouteId);
                 
             //! If there is no route so there is a problem, go to the next package
             if(route == null)
@@ -77,14 +102,14 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
             {
                 result.Add(new  PackageAppDto()
                 {
-                    Id = x.Id,
+                    Id = package.Id,
                     Location = new LocationsDto()
                     {
-                        Latitude = x.RouteStop.Location.Latitude,
-                        Longitude = x.RouteStop.Location.Longitude,
+                        Latitude = package.RouteStop.Location.Latitude,
+                        Longitude = package.RouteStop.Location.Longitude,
                     },
-                    Status = x.Status,
-                    Receptor = x.User.Name + " " + x.User.Surnames,
+                    Status = package.Status,
+                    Receptor = package.User.Name + " " + package.User.Surnames,
                     TimeToDeliver = $"Esperando salida de almacén"
                 });
                 continue;
@@ -111,16 +136,18 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
 
             var body = new
             {
-                coordinates = beforePackage.Select(y => new double[]
-                    { y.Location.Longitude, y.Location.Latitude})
+                coordinates = coordinates
             };
 
             //! Serialize the request
             string json = JsonSerializer.Serialize(body);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            Console.WriteLine($"Http request to: http://{_configuration.GetValue<string>("DockerIps:Ors")}:8082/ors/v2/directions/driving-car");
+            Console.WriteLine($"Content: {json}");
             
             //! Send the request to the ORS service
-            var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8080/ors/v2/directions/driving-car", content);
+            var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8082/ors/v2/directions/driving-car", content);
 
             //! If the response is not successfull, we continue to the next package
             if (!response.IsSuccessStatusCode)
@@ -134,14 +161,14 @@ public class GetPackagesByUserIdQueryHandler : IRequestHandler<GetPackagesByUser
             //! We add the object PackageAppDto from the package entity and format the time to deliver from time span            
             result.Add(new  PackageAppDto()
             {
-                Id = x.Id,
+                Id = package.Id,
                 Location = new LocationsDto()
                 {
-                    Latitude = x.RouteStop.Location.Latitude,
-                    Longitude = x.RouteStop.Location.Longitude,
+                    Latitude = package.RouteStop.Location.Latitude,
+                    Longitude = package.RouteStop.Location.Longitude,
                 },
-                Status = x.Status,
-                Receptor = x.User.Name + " " + x.User.Surnames,
+                Status = package.Status,
+                Receptor = package.User.Name + " " + package.User.Surnames,
                 TimeToDeliver = $"{ts.Hours}h {ts.Minutes}m {ts.Seconds}s"
             });
         };

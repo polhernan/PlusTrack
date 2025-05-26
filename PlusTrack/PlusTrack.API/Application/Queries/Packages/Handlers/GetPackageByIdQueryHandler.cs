@@ -34,6 +34,30 @@ public class GetPackageByIdQueryHandler : IRequestHandler<GetPackageByIdQuery, P
             .Include(y => y.User)
             .FirstOrDefault(y => y.Id.Equals(request.PackageId));
 
+        if (package.RouteStop.RouteId == null || package.Status != (int)PackageStatus.EnReparto)
+        {
+            string text = "On the office. Waiting for a driver!";
+            if (package.Status == (int)PackageStatus.Entregado)
+            {
+                text = "The package is been delivered.";
+            }else if (package.Status == (int)PackageStatus.Entregado)
+            {
+                text = "The package couldn't been delivered.";
+            }
+            return new PackageAppDto()
+            {
+                Id = package.Id,
+                Location = new LocationsDto()
+                {
+                    Latitude = package.RouteStop.Location.Latitude,
+                    Longitude = package.RouteStop.Location.Longitude,
+                },
+                Status = package.Status,
+                Receptor = package.User.Name + " " + package.User.Surnames,
+                TimeToDeliver = text
+            };
+        }
+
         //! If the package is null raise a custom exception
         if (package == null)
             throw new EntityNotFoundException($"Package with id {request.PackageId} not found");
@@ -120,7 +144,7 @@ public class GetPackageByIdQueryHandler : IRequestHandler<GetPackageByIdQuery, P
 
         string json = JsonSerializer.Serialize(body);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
-        var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8080/ors/v2/directions/driving-car", content);
+        var response = await httpClient.PostAsync($"http://{_configuration.GetValue<string>("DockerIps:Ors")}:8082/ors/v2/directions/driving-car", content);
 
         //! If ors response is not succesfull raise an exception
         if (!response.IsSuccessStatusCode)
